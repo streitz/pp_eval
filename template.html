@@ -1,0 +1,134 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+        <title>Projektserver 2.0 Bestellformular</title> 
+
+        <!-- jQuery UI -->
+        <link type="text/css" href="jqueryui/css/ui-lightness/jquery-ui-1.8.21.custom.css" rel="stylesheet"/>
+        <script type="text/javascript" src="jqueryui/js/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="jqueryui/js/jquery-ui-1.8.21.custom.min.js"></script>
+
+        <!-- jQuery Tooltip -->
+        <link type="text/css" href="jquery-tooltip/jquery.tooltip.css" rel="stylesheet"/>
+        <script type="text/javascript" src="jquery-tooltip/jquery.tooltip.js"></script>
+
+        <!-- Custom Order -->
+        <link href="order.css" rel="stylesheet"/>
+        <script type="text/javascript" src="order.js"></script>
+    </head> 
+    <body>
+        <div id="order">
+           <div class="title">Bestellung Projektserver 2.0</div>
+           <div class="tooltip" title="Preis (einmalig) - Einmalige Bereitstellungskosten (enthält die Aufwände von sowohl msa als auch XT, etc)" id="price_ini">
+               <div class="price_value"></div>
+               <div class="price_info">einmalig</div>
+           </div>
+           <div class="tooltip" title="Preis (monatlich) - Monatliche Betriebskosten (enthält die Hardware-Kosten, Betriebskosten durch msa, Weiterentwicklung durch XT, etc)" id="price_mon">
+               <div class="price_value"></div>
+               <div class="price_info">monatlich</div>
+           </div>
+           <table>
+               <tr>
+                   <td class="tooltip" title="Besteller - Der Besteller des Projektservers">Besteller: *</td>
+                   <td><input type="text" id="input-user" class="input" value="streitza" disabled="disabled"/></td>
+               </tr>
+               <tr>
+                   <td class="tooltip" title="Projekt - Das eindeutige Projektkürzel (z.B. ACM) oder alternativ das GB-Kürzel (z.B. GB A)">Projekt: *</td>
+                   <td><input type="text" id="input-projekt" class="input"/></td>
+               </tr>
+               <tr>
+                   <td class="tooltip" title="Kostenstelle - Die offizielle Kostenstellen-Nummer für die Interne Leistungsverrechnung (ILV)">Kostenstelle: *</td>
+                   <td><input type="text" id="input-kostenstelle" class="input"/></td>
+               </tr>
+               <tr>
+                   <td class="tooltip" title="Administrator 1 - Der primäre Ansprechpartner, der sich als Administrator um den Server kümmert">Administrator 1:&nbsp;*</td>
+                   <td><input type="text" id="input-contact1" class="input"/></td>
+               </tr>
+               <tr>
+                   <td class="tooltip" title="Administrator 2 - Der sekundäre Ansprechpartner, der sich als Administrator um den Server kümmert">Administrator 2:&nbsp;*</td>
+                   <td><input type="text" id="input-contact2" class="input"/></td>
+               </tr>
+               <tr>
+                   <td class="tooltip" title="CPU - Anzahl CPUs.
+                   Achtung: die Anzahl CPU bedingt laut Service-Provider immer einen jeweils gültigen Bereich an GB RAM.
+                   (1 CPU: 2-4 GB RAM, 2 CPU: 8-12 GB RAM, 4 CPU: 16-24 GB RAM)
+                   ">
+                       CPU (#):</td>
+                   <td><div id="slider-cpu" class="slider"></div></td>
+                   <td><div id="cpu-value" class="value"></div></td>
+               </tr>
+               <tr>
+                   <td class="tooltip" title="RAM - Die Größe des Arbeitsspeichers in GB.
+                   Achtung: die GB RAM bedingt laut Service-Provider immer eine jeweils gültige Anzahl CPU.
+                   (1 CPU: 2-4 GB RAM, 2 CPU: 8-12 GB RAM, 4 CPU: 16-24 GB RAM)
+                   ">RAM (GB):</td>
+                   <td><div id="slider-ram" class="slider"></div></td>
+                   <td><div id="ram-value" class="value"></div></td>
+               </tr>
+               <tr>
+                   <td class="tooltip" title="HD - Die Größe der Festplatte in GB">HD (GB):</td>
+                   <td><div id="slider-hd" class="slider"></div></td>
+                   <td><div id="hd-value" class="value"></div></td>
+               </tr>
+               <tr>
+                   <td class="tooltip" title="Service-Classes - 
+<!--                   A: 7x24 Nutzungszeit + 5x12 vor Ort Support + 7x24 Remote Troubleshooting + Backup + HW+SW-Monitoring + Ticket + Alarmierung;<br/> -->
+                   B: 5x24 Nutzungszeit + 5x12 vor Ort Support + 5x24 Remote Troubleshooting + Backup + HW+SW-Monitoring + Ticket + Alarmierung;<br/>
+                   C: 5x12 Nutzungszeit + 5x8 vor Ort Support + Backup + HW+SW-Monitoring + Ticket;<br/>
+                   D: 5x12 Nutzungszeit + 5x8 vor Ort Support + Backup + HW-Monitoring<br/>
+                   ">Service-Class:</td>
+                   <td><div id="slider-sc" class="slider"></div></td>
+                   <td><div id="sc-value" class="value"></div></td>
+               </tr>
+               <tr>
+                   <td class="tooltip" title="Netzwerk-Bereich - Netzwerk-Bereich: Intranet oder Intranet-Mobile. Achtung: Intranet-Mobile ist wie Intranet, aber zusätzlich ist ein VPN-Zugriff mit JUNOS PULSE von Mobile-Devices möglich. DMZ wird noch nicht unterstützt.">
+                       Netzwerk-Bereich:
+                   </td>
+                   <td>
+                       <select class="network">
+                           <option value="intranet" selected="selected">Intranet</option>
+                           <option value="intranet_mobile">Intranet (auch für Mobile Devices)</option>
+<!--                           <option value="dmz">DMZ</option> -->
+                       </select>
+                   </td>
+                   <td>
+                   </td>
+               </tr>
+<!--               <tr>
+                   <td class="tooltip" title="Anmerkungen, Zusatzinfos, ...">Bemerkung: *</td>
+                   <td><input type="text" id="input-comment" class="input"/></td>
+               </tr>
+ -->
+            </table>
+            <br/>
+            <table>
+                <tr>
+                    <td>
+                        <form method="POST" action="order.php" id="formular">
+                            <button id="submit" disabled="disabled">Bestellen!</button>
+                            <input type="hidden" name="user" value=""/>
+                            <input type="hidden" name="projekt" value=""/>
+                            <input type="hidden" name="kostenstelle" value=""/>
+                            <input type="hidden" name="contact1" value=""/>
+                            <input type="hidden" name="contact2" value=""/>
+                            <input type="hidden" name="cpu" value=""/>
+                            <input type="hidden" name="ram" value=""/>
+                            <input type="hidden" name="hd" value=""/>
+                            <input type="hidden" name="sc" value=""/>
+                            <input type="hidden" name="network" value=""/>
+                            <input type="hidden" name="price_ini" value=""/>
+                            <input type="hidden" name="price_mon" value=""/>
+<!--                             <input type="hidden" name="comment" value=""/>   -->
+                        </form>
+                    </td>
+                    <td>
+                        Bitte beachten: Nach Rückfrage beim Kostenstellenverantwortlichen und dessen OK
+                        muss mit einer durchschnittlichen Bereitsstellungszeit von etwa 9 Arbeitstagen gerechnet werden!
+                        Ein Kollege von XT wird dich kontaktieren!
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body> 
+</html>

@@ -1,0 +1,72 @@
+
+<!doctype html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <link rel="stylesheet" type="text/css" href="/lib/css/jquery-ui.css">
+
+   <title>LabeledSlider Different Sizes Test</title>
+
+   <script src="lib/jquery.js"></script>
+   <script src="lib/jquery-ui.js"></script>
+
+   <link rel="stylesheet" href="lib/css/jquery.ui.labeledslider.css">
+
+   <script src="lib/jquery.ui.labeledslider.js"></script>
+
+   <script>
+   $(function() {
+      $('#sized-h').labeledslider({ max: 15 });
+      $('#size1-h').labeledslider({ max: 4 });
+      $('#size2-h').labeledslider({ max: 10 });
+      $('#size3-h').labeledslider({ max: 10 });
+
+      $('#sized-v').labeledslider({ max: 7, orientation: 'vertical' });
+      $('#size1-v').labeledslider({ max: 4, orientation: 'vertical' });
+      $('#size2-v').labeledslider({ max: 10, orientation: 'vertical' });
+      $('#size3-v').labeledslider({ max: 10, orientation: 'vertical' });
+   });
+   </script>
+   <style>
+      body { font-family: sans-serif,arial;  }
+      .wrapper.horizontal { width: 400px; margin: auto; }
+      .wrapper.vertical { position: relative; width: 400px; height: 250px; margin: auto; }
+      .wrapper.vertical > div { position: absolute; top: 0; }
+
+      #size1-h { width: 100px; }
+      #size2-h { width: 200px; }
+      #size3-h { width: 300px; }
+
+      #size1-v { height: 100px; }
+      #size2-v { height: 200px; }
+      #size3-v { height: 300px; }
+
+   </style>
+</head>
+<body>
+
+<a href="https://github.com/bseth99/jquery-ui-extensions"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+
+<div class="wrapper horizontal">
+   <h3>LabeledSlider Font Size Scaling Test</h3>
+
+   <div>
+      <a href="../index.html">&lt; Back to widget demos</a>
+   </div>
+   <br/>
+
+   <div id="sized-h"></div>
+   <div id="size1-h"></div>
+   <div id="size2-h"></div>
+   <div id="size3-h"></div>
+</div>
+
+<div class="wrapper vertical ">
+   <div style="left: 0;"><div id="sized-v"></div></div>
+   <div style="left: 25%;"><div id="size1-v"></div></div>
+   <div style="left: 50%;"><div id="size2-v"></div></div>
+   <div style="left: 75%;"><div id="size3-v"></div></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+
+html {
+    height: 100%;
+}
+
+body {
+    background: #999999;
+    font-family: sans-serif;
+}
+
+div#eval {
+    top: 40px;
+    left: 40px;
+    background: #ffffff;
+    position: relative;
+    width: 780px;
+    font-family: sans-serif;
+    font-size: 12pt;
+    padding: 20px;
+    border-radius: 10px 10px 10px 10px;
+    border-bottom-right-radius: 10px; 
+    border-bottom-left-radius: 10px; 
+    border-top-left-radius: 10px; 
+    border-top-right-radius: 10px; 
+    -webkit-box-shadow: 2px 2px 8px 2px;
+    box-shadow: 2px 2px 8px 2px; 
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ffffff 0%, #e8e8e8 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e8e8e8)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#e8e8e8 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ffffff 0%,#e8e8e8 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ffffff 0%,#e8e8e8 100%); /* IE10+ */
+    background: linear-gradient(top,  #ffffff 0%,#e8e8e8 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e8e8e8',GradientType=0 ); /* IE6-9 */
+    behavior: url('pie/PIE.php');
+}
+
+div.slider {
+    width: 400px;
+}
+
+div.value {
+    margin-left: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 30px;
+    font-weight: bold;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    color: #000000;
+    text-align: right;
+}
+
+button#submit {
+    width: 120px;
+    height: 60px;
+    font-style: bold;
+    font-size: 14pt;
+    background-color: #006600;
+    color: #ffffff;
+    border: 0px;
+    border-bottom-right-radius: 10px; 
+    border-bottom-left-radius: 10px; 
+    border-top-left-radius: 10px; 
+    border-top-right-radius: 10px; 
+    cursor: pointer;
+    margin-right: 20px;
+    behavior: url('pie/PIE.php');
+}
+button#submit[disabled] {
+    background-color: #cccccc;
+}
+
+input {
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    width: 400px;
+}
+input#input-user {
+    background: #f0f0f0;
+}
+div.ui-slider {
+    background: #ffffff !important;
+    border: 1px solid #cccccc;
+    cursor: pointer;
+}
+a.ui-slider-handle {
+    border: 0px solid #666666 !important;
+    border-bottom-right-radius: 10px; 
+    border-bottom-left-radius: 10px; 
+    border-top-left-radius: 10px; 
+    border-top-right-radius: 10px; 
+    cursor: pointer;
+    background: -moz-radial-gradient(center, ellipse cover,  #cccccc 0%, #999999 100%) !important; /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#cccccc), color-stop(100%,#999999)) !important; /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  #cccccc 0%, #999999 100%) !important; /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover, #cccccc 0%,#999999 100%) !important; /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover, #cccccc 0%,#999999 100%) !important; /* IE10+ */
+    background: radial-gradient(center, ellipse cover, #cccccc 0%,#999999 100%) !important; /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cccccc', endColorstr='#999999',GradientType=1 ) !important; /* IE6-9 fallback on horizontal gradient */
+    behavior: url('pie/PIE.php');
+}
+
+div.title {
+    font-weight: bold;
+    font-size: 24pt;
+    margin-bottom: 16px;
+    text-shadow: 1px 1px 4px #ffffff;
+    filter: dropshadow(color=#ffffff, offx=1, offy=1);
+    behavior: url('pie/PIE.php');
+}
+
+#tooltip {
+    border: 1px solid #cb6;
+    background-color: #fe8;
+    padding: 5px;
+    opacity: 1.0;
+    width: 300px;
+    -webkit-box-shadow: 1px 1px 8px 1px;
+    box-shadow: 1px 1px 8px 1px; 
+    font-size: 8pt;
+    behavior: url('pie/PIE.php');
+}
+

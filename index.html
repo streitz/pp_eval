@@ -1,0 +1,158 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+        <title>Evaluation of Polyglot Persistence</title> 
+
+        <!-- jQuery UI -->
+        <link type="text/css" href="/lib/css/jquery-ui.css" rel="stylesheet"/>
+        <script type="text/javascript" src="lib/jquery.js"></script>
+        <script type="text/javascript" src="lib/jquery-ui.js"></script>
+
+        <!-- jQuery UI extensions -->
+        <link rel="stylesheet" href="lib/css/jquery.ui.labeledslider.css">
+		<script type="text/javascript" src="lib/jquery.ui.labeledslider.js"></script>        
+
+        <!-- jQuery Tooltip -->
+        <link type="text/css" href="lib/css/jquery.tooltip.css" rel="stylesheet"/>
+        <script type="text/javascript" src="lib/jquery.tooltip.js"></script>
+
+        <!-- Custom Order -->
+        <link href="css/eval.css" rel="stylesheet"/>
+        <script type="text/javascript" src="eval.js"></script>
+    </head> 
+    <body>
+        <div id="eval">
+           <div class="title">Evaluation for Polyglot Persistence</div>
+           <table>
+           		<tr>
+                   <th class="tooltip" title="General">General</th>
+               	</tr>
+               	<tr>
+                   <td class="tooltip name" title="Availability">Availability:</td>
+                   <td><div id="slider-availability" class="slider"></div></td>
+               	</tr>
+               	<tr>
+                   <td class="tooltip" title="Consistency">Consistency:</td>
+                   <td><div id="slider-consistency" class="slider"></div></td>
+               	</tr>
+	            <tr>
+                   <td class="tooltip" title="Partition Tolerance">Partiation Tolerance:</td>
+                   <td><div id="slider-ptolerance" class="slider"></div></td>
+    	        </tr>
+    	        <tr>
+                   <th class="tooltip" title="Data">Data</th>
+               	</tr>
+               	<tr>
+                   <td class="tooltip" title="Data Sizing">Current Sizing:</td>
+                   <td><div id="slider-data_sizing" class="slider"></div></td>
+               	</tr>
+               	<tr>
+                   <td class="tooltip" title="Data Growth Prediction">Growth Prediction:</td>
+                   <td><div id="slider-data_growth" class="slider"></div></td>
+               	</tr>
+               	<tr>
+                   <th class="tooltip" title="Data Type Ratio">Data Types</th>
+               	</tr>
+               	<tr>
+                   <td class="tooltip" title="Relational Data">Relational Data:</td>
+                   <td><div id="slider-relational" class="slider"></div></td>
+                   <td><div id="relational-value" class="value"></div></td>
+                   <td><div>%</div></td>
+               	</tr>
+               	<tr>
+                   <td class="tooltip" title="Transient Data">Transient Data:</td>
+                   <td><div id="slider-transient" class="slider"></div></td>
+                   <td><div id="transient-value" class="value"></div></td>
+                   <td><div>%</div></td>
+               	</tr>
+               	<tr>
+                   <td class="tooltip" title="Mass Data">Mass Data:</td>
+                   <td><div id="slider-mass" class="slider"></div></td>
+                   <td><div id="mass-value" class="value"></div></td>
+                   <td><div>%</div></td>
+               	</tr>
+               	<tr>
+                   <td class="tooltip" title="Bulk Data">Bulk Data:</td>
+                   <td><div id="slider-bulk" class="slider"></div></td>
+                   <td><div id="bulk-value" class="value"></div></td>
+                   <td><div>%</div></td>
+               	</tr>
+               	<tr>
+                   <td class="tooltip" title="Time-Series Data">Time-Series Data:</td>
+                   <td><div id="slider-time" class="slider"></div></td>
+                   <td><div id="time-value" class="value"></div></td>
+                   <td><div>%</div></td>
+               	</tr>
+               	<tr>
+                   <td class="tooltip" title="Hierarchical Data">Hierarchical Data:</td>
+                   <td><div id="slider-hierarchical" class="slider"></div></td>
+                   <td><div id="hierarchical-value" class="value"></div></td>
+                   <td><div>%</div></td>
+               	</tr>
+               	<tr>
+                   <td class="tooltip" title="Graph Data">Graph Data:</td>
+                   <td><div id="slider-graph" class="slider"></div></td>
+                   <td><div id="graph-value" class="value"></div></td>
+                   <td><div>%</div></td>
+               	</tr>
+               	<tr>
+                   <th class="tooltip" title="Query">Query</th>
+               	</tr>
+               	<tr>
+                   <td class="tooltip" title="Frequency (#Requests/Time)">Frequency:</td>
+                   <td><div id="slider-query_freq" class="slider"></div></td>
+               	</tr>
+               	<tr>
+                   <td class="tooltip" title="Change Prediction">Change Prediction:</td>
+                   <td><div id="slider-query_prediction" class="slider"></div></td>
+               	</tr>
+               	<tr>
+                   <th class="tooltip" title="Query Type Ratio">Query Types</th>
+               	</tr>
+               	<tr>
+                   <td class="tooltip" title="Queries by ID">by ID:</td>
+                   <td><div id="slider-query_type_id" class="slider"></div></td>
+                   <td><div id="query_type_id-value" class="value"></div></td>
+                   <td><div>%</div></td>
+               	</tr>
+               	<tr>
+                   <td class="tooltip" title="Queries by Example">by example:</td>
+                   <td><div id="slider-query_type_example" class="slider"></div></td>
+                   <td><div id="query_type_example-value" class="value"></div></td>
+                   <td><div>%</div></td>
+               	</tr>
+               	<tr>
+                   <td class="tooltip" title="Queries by Relations">by relationship:</td>
+                   <td><div id="slider-query_type_relationship" class="slider"></div></td>
+                   <td><div id="query_type_relationship-value" class="value"></div></td>
+                   <td><div>%</div></td>
+               	</tr>        
+            </table>
+            <br/>
+            <table>
+                <tr>
+                    <td>
+                        <form method="POST" action="order.php" id="formular">
+                            <button id="submit" disabled="disabled">Evaluate!</button>
+                            <input type="hidden" name="user" value=""/>
+                            <input type="hidden" name="projekt" value=""/>
+                            <input type="hidden" name="kostenstelle" value=""/>
+                            <input type="hidden" name="contact1" value=""/>
+                            <input type="hidden" name="contact2" value=""/>
+                            <input type="hidden" name="cpu" value=""/>
+                            <input type="hidden" name="ram" value=""/>
+                            <input type="hidden" name="hd" value=""/>
+                            <input type="hidden" name="sc" value=""/>
+                            <input type="hidden" name="network" value=""/>
+                            <input type="hidden" name="price_ini" value=""/>
+                            <input type="hidden" name="price_mon" value=""/>
+                        </form>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body> 
+</html>
