@@ -2,7 +2,8 @@
     $(document).ready(function () {
         $(".tooltip").tooltip({
             showBody: " - ",
-	    fade: 250
+	        fade: 250,
+            position: { my: "left top", at: "left bottom-30", collision: "flipfit" }
         })
 
         var features_pattern;
@@ -174,4 +175,30 @@
 
         return lines;
     }
+
+
+    $(document).on('click', '#import', function() {
+        $('#definition_load').trigger('click')
+    });
+
+
+    $('#definition_load').change(function (evt) {
+        var files = evt.target.files;
+
+        for (var i = 0, f; (f = files[i]); i++) {
+            /* global FileReader: true */
+            var reader = new FileReader()
+            reader.onload = (function () {
+                return function (e) {
+                    var content = e.target.result
+                    features_pattern = processData(content);
+                    debugger
+                }
+            })(f)
+
+            reader.readAsText(f)
+            $('#definition_load').val('')
+        }
+    })
+
 })(jQuery);
