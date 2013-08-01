@@ -1,21 +1,7 @@
 (function ($) {
     $(document).ready(function () {
-        $(".tooltip").tooltip({
-            showBody: " - ",
-	        fade: 250,
-            position: { my: "left top", at: "left bottom-30", collision: "flipfit" }
-        })
-
         var features_pattern;
         var features_db;
-
-        $.get("data/pattern.csv", function(data){
-            features_pattern = processData(data);
-        })
-
-        // $.get("data/db.csv", function(data){
-        //     features_db = processData(data);
-        // })
 
         var data = {
             availability: 0,
@@ -58,6 +44,23 @@
             fulltext: 0
         }
 
+
+        $(".tooltip").tooltip({
+            showBody: " - ",
+            fade: 250,
+            position: { my: "left top", at: "left bottom-30", collision: "flipfit" }
+        })
+
+
+        $.get("data/pattern.csv", function(data){
+            features_pattern = processData(data);
+        })
+
+        // $.get("data/db.csv", function(data){
+        //     features_db = processData(data);
+        // })
+        
+
         var total = function (model) {
             var sum = 0;
             for(key in model) {
@@ -69,26 +72,94 @@
             return sum;
         }
 
-        var features_db;
-        var features_pattern;
+
+        $('#pattern_load').change(function (evt) {
+            var files = evt.target.files;
+
+            for (var i = 0, f; (f = files[i]); i++) {
+                /* global FileReader: true */
+                var reader = new FileReader()
+                reader.onload = (function () {
+                    return function (e) {
+                        var content = e.target.result
+                        features_pattern = processData(content);
+                    }
+                })(f)
+
+                reader.readAsText(f)
+                $('#pattern_load').val('')
+            }
+        })
+
+        $('#db_load').change(function (evt) {
+            var files = evt.target.files;
+
+            for (var i = 0, f; (f = files[i]); i++) {
+                /* global FileReader: true */
+                var reader = new FileReader()
+                reader.onload = (function () {
+                    return function (e) {
+                        var content = e.target.result
+                        features_db = processData(content);
+                    }
+                })(f)
+
+                reader.readAsText(f)
+                $('#db_load').val('')
+            }
+        })
 
 
         var update = function () {
-            $("#relational-value").html(Math.floor(data_structures.relat*100/total(data_structures)));
-            $("#graph-value").html(Math.floor(data_structures.graph*100/total(data_structures)));
-            $("#hierarchical-value").html(Math.floor(data_structures.hier*100/total(data_structures)));
-            $("#document-value").html(Math.floor(data_structures.doc*100/total(data_structures)));
-            $("#kv-value").html(Math.floor(data_structures.kv*100/total(data_structures)));
+            var p_relat = { value: Math.round(data_structures.relat*100/total(data_structures)) }
+            var p_graph = { value: Math.round(data_structures.graph*100/total(data_structures)) }
+            var p_hier = { value: Math.round(data_structures.hier*100/total(data_structures)) }
+            var p_doc = { value: Math.round(data_structures.doc*100/total(data_structures)) }
+            var p_kv = { value: Math.round(data_structures.kv*100/total(data_structures)) }
 
-            $("#transient-value").html(Math.floor(data_categories.trans*100/total(data_categories)));
-            $("#mass-value").html(Math.floor(data_categories.mass*100/total(data_categories)));
-            $("#bulk-value").html(Math.floor(data_categories.bulk*100/total(data_categories)));
-            $("#time-value").html(Math.floor(data_categories.time*100/total(data_categories)));
+            var p_total1 = p_relat.value + p_graph.value + p_hier.value + p_doc.value + p_kv.value;
 
-            $("#query_type_id-value").html(Math.floor(query_types.id*100/total(query_types)));
-            $("#query_type_example-value").html(Math.floor(query_types.example*100/total(query_types)));
-            $("#query_type_relationship-value").html(Math.floor(query_types.relation*100/total(query_types)));
-            $("#query_type_fulltext-value").html(Math.floor(query_types.fulltext*100/total(query_types)));
+            var maximum1 = _.max([p_relat, p_graph, p_hier, p_doc, p_kv], function (item) { return item.value })
+
+            maximum1.value += 100 - p_total1
+
+            $("#relational-value").html(p_relat.value);
+            $("#graph-value").html(p_graph.value);
+            $("#hierarchical-value").html(p_hier.value);
+            $("#document-value").html(p_doc.value);
+            $("#kv-value").html(p_kv.value);
+
+            var p_trans = { value: Math.round(data_categories.trans*100/total(data_categories)) }
+            var p_mass = { value: Math.round(data_categories.mass*100/total(data_categories)) }
+            var p_bulk = { value: Math.round(data_categories.bulk*100/total(data_categories)) }
+            var p_time = { value: Math.round(data_categories.time*100/total(data_categories)) }
+
+            var p_total2 = p_trans.value + p_mass.value + p_bulk.value + p_time.value;
+
+            var maximum2 = _.max([p_trans, p_mass, p_bulk, p_time], function (item) { return item.value })
+            
+            maximum2.value += 100 - p_total2
+
+            $("#transient-value").html(p_trans.value);
+            $("#mass-value").html(p_mass.value);
+            $("#bulk-value").html(p_bulk.value);
+            $("#time-value").html(p_time.value);
+
+            var p_id = { value: Math.round(query_types.id*100/total(query_types)) }
+            var p_example = { value: Math.round(query_types.example*100/total(query_types)) }
+            var p_relation = { value: Math.round(query_types.relation*100/total(query_types)) }
+            var p_fulltext = { value: Math.round(query_types.fulltext*100/total(query_types)) }
+
+            var p_total3 = p_id.value + p_example.value + p_relation.value + p_fulltext.value;
+
+            var maximum3 = _.max([p_id, p_example, p_relation, p_fulltext], function (item) { return item.value })
+            
+            maximum3.value += 100 - p_total3
+
+            $("#query_type_id-value").html(p_id.value);
+            $("#query_type_example-value").html(p_example.value);
+            $("#query_type_relationship-value").html(p_relation.value);
+            $("#query_type_fulltext-value").html(p_fulltext.value);
         }
 
         var normalSlider = function (id, model, field) {
@@ -145,7 +216,7 @@
         labeledSlider('#slider-availability', 'availability', categories)
         labeledSlider('#slider-consistency', 'consistency', categories)
         labeledSlider('#slider-ptolerance', 'ptolerance', categories)
-        labeledSlider('#slider-data_sizing', 'size', ['< 100 MB', '< 1 GB', '< 100 GB', '< 1 TB', 'TB', 'PB'])
+        labeledSlider('#slider-data_sizing', 'size', ['< 100 MB', '< 1 GB', '< 100 GB', '< 1 TB', 'TBs', 'PBs'])
         labeledSlider('#slider-data_growth', 'growth', changes)
         labeledSlider('#slider-query_freq', 'frequency', ['<= 1', '10', '100', '1000', '10000', '>=100000'])
         labeledSlider('#slider-query_prediction', 'f_change', changes)
@@ -177,28 +248,12 @@
     }
 
 
-    $(document).on('click', '#import', function() {
-        $('#definition_load').trigger('click')
+    $(document).on('click', '#import_pattern', function() {
+        $('#pattern_load').trigger('click');
     });
 
-
-    $('#definition_load').change(function (evt) {
-        var files = evt.target.files;
-
-        for (var i = 0, f; (f = files[i]); i++) {
-            /* global FileReader: true */
-            var reader = new FileReader()
-            reader.onload = (function () {
-                return function (e) {
-                    var content = e.target.result
-                    features_pattern = processData(content);
-                    debugger
-                }
-            })(f)
-
-            reader.readAsText(f)
-            $('#definition_load').val('')
-        }
-    })
+    $(document).on('click', '#import_db', function() {
+        $('#db_load').trigger('click');
+    });
 
 })(jQuery);

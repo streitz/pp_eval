@@ -17,6 +17,9 @@
         <link type="text/css" href="lib/css/jquery.tooltip.css" rel="stylesheet"/>
         <script type="text/javascript" src="lib/jquery.tooltip.js"></script>
 
+        <!-- underscore.js -->
+        <script type="text/javascript" src="lib/underscore-min.js"></script>
+
         <!-- Custom Eval -->
         <link href="css/eval.css" rel="stylesheet"/>
         <script type="text/javascript" src="eval.js"></script>
@@ -25,147 +28,149 @@
     <body>
         <div id="eval">
            <div class="title">Evaluation for Polyglot Persistence</div>
-           <input type="file" class="hidden_upload" id="definition_load"/>
-           <button id="import">Load Definitions</button>
+           <input type="file" class="hidden_upload" id="pattern_load"/>
+           <button id="import_pattern">Import Pattern Features</button>
+           <input type="file" class="hidden_upload" id="db_load"/>
+           <button id="import_db">Import Database Features</button>
            <table>
            		  <tr class="spaceTop">
-                   <td class="tooltip head property-title" title="General Attitude">General</td>
+                   <td class="tooltip head property-title" title="Importance of Section 'General'">General</td>
                    <td><div id="slider-general" class="headslider"></div></td>
                	</tr>
                 <tr>
-                   <td class="tooltip property-title" title="How much money are you willing to spend for your database system?">Investment:</td>
+                   <td class="tooltip property-title" title="How much money are you willing to spend?">Investment:</td>
                    <td><div id="slider-investment" class="slider"></div></td>
                 </tr>
                 <tr>
-                   <td class="tooltip property-title" title="How much innovation (innovative database products) are you willing to use?">Innovation:</td>
+                   <td class="tooltip property-title" title="How much innovation (new database products) are you willing to use?">Innovation:</td>
                    <td><div id="slider-innovation" class="slider"></div></td>
                 </tr>
                 <tr class="spaceTop">
-                   <td class="tooltip head property-title" title="Requirements">Requirements</td>
+                   <td class="tooltip head property-title" title="Importance of Section 'Requirements'">Requirements</td>
                    <td><div id="slider-requirements" class="headslider"></div></td>
                 </tr>                
                	<tr>
-                   <td class="tooltip property-title" title="Availability">Availability:</td>
+                   <td class="tooltip property-title" title="(Guarantee that every request receives a response about whether it was successful or failed">Availability:</td>
                    <td><div id="slider-availability" class="slider"></div></td>
                	</tr>
                	<tr>
-                   <td class="tooltip property-title" title="Consistency">Consistency:</td>
+                   <td class="tooltip property-title" title="All nodes see the same data at the same time">Consistency:</td>
                    <td><div id="slider-consistency" class="slider"></div></td>
                	</tr>
 	              <tr>
-                   <td class="tooltip property-title" title="Partition Tolerance">Partiation Tolerance:</td>
+                   <td class="tooltip property-title" title="System operations continue despite arbitrary message loss or failure of part of the system">Partiation Tolerance:</td>
                    <td><div id="slider-ptolerance" class="slider"></div></td>
     	          </tr>
     	          <tr class="spaceTop">
-                   <td class="tooltip head property-title" title="Data">Data</td>
+                   <td class="tooltip head property-title" title="Importance of Section 'Data'">Data</td>
                    <td><div id="slider-data" class="headslider"></div></td>
                	</tr>
                	<tr>
-                   <td class="tooltip property-title" title="Data Sizing">Current Sizing:</td>
+                   <td class="tooltip property-title" title="How big is your current data?">Current Sizing:</td>
                    <td><div id="slider-data_sizing" class="slider"></div></td>
                	</tr>
                	<tr>
-                   <td class="tooltip property-title" title="Data Growth Prediction">Growth Prediction:</td>
+                   <td class="tooltip property-title" title="How much will you data increase?">Growth Prediction:</td>
                    <td><div id="slider-data_growth" class="slider"></div></td>
                	</tr>
                	<tr class="spaceTop">
-                   <td class="tooltip head property-title" title="Data Type Ratio">Data Structure Types</td>
+                   <td class="tooltip head property-title" title="Ratio of used data structure types in your database environment">Data Structure Types</td>
                    <td><div id="slider-data_type" class="headslider"></div></td>
                	</tr>
                	<tr>
-                   <td class="tooltip property-title" title="Relational Data">Relational Data:</td>
+                   <td class="property-title">Relational Data:</td>
                    <td><div id="slider-relational" class="slider"></div></td>
                    <td><div id="relational-value" class="value"></div></td>
                    <td><div>%</div></td>
                	</tr>
                 <tr>
-                   <td class="tooltip property-title" title="Hierarchical Data">Hierarchical Data:</td>
+                   <td class="property-title">Hierarchical Data:</td>
                    <td><div id="slider-hierarchical" class="slider"></div></td>
                    <td><div id="hierarchical-value" class="value"></div></td>
                    <td><div>%</div></td>
                 </tr>
                 <tr>
-                   <td class="tooltip property-title" title="Graph Data">Graph Data:</td>
+                   <td class="property-title">Graph Data:</td>
                    <td><div id="slider-graph" class="slider"></div></td>
                    <td><div id="graph-value" class="value"></div></td>
                    <td><div>%</div></td>
                 </tr>
                 <tr>
-                   <td class="tooltip property-title" title="Document Data">Document Data:</td>
+                   <td class="property-title">Document Data:</td>
                    <td><div id="slider-document" class="slider"></div></td>
                    <td><div id="document-value" class="value"></div></td>
                    <td><div>%</div></td>
                 </tr>
                 <tr>
-                   <td class="tooltip property-title" title="Key-Value Data">Key-Value Data:</td>
+                   <td class="property-title">Key-Value Data:</td>
                    <td><div id="slider-kv" class="slider"></div></td>
                    <td><div id="kv-value" class="value"></div></td>
                    <td><div>%</div></td>
                 </tr>
                 <tr class="spaceTop">
-                   <td class="tooltip head property-title" title="Data Properties Ratio">Data Properties</td>
+                   <td class="tooltip head property-title" title="Ratio of used data properties in your database environment">Data Properties</td>
                    <td><div id="slider-data_properties" class="headslider"></div></td>
                 </tr>
                	<tr>
-                   <td class="tooltip property-title" title="Transient Data">Transient Data:</td>
+                   <td class="property-title">Transient Data:</td>
                    <td><div id="slider-transient" class="slider"></div></td>
                    <td><div id="transient-value" class="value"></div></td>
                    <td><div>%</div></td>
                	</tr>
                	<tr>
-                   <td class="tooltip property-title" title="Mass Data">Mass Data:</td>
+                   <td class="property-title">Mass Data:</td>
                    <td><div id="slider-mass" class="slider"></div></td>
                    <td><div id="mass-value" class="value"></div></td>
                    <td><div>%</div></td>
                	</tr>
                	<tr>
-                   <td class="tooltip property-title" title="Bulk Data">Bulk Data:</td>
+                   <td class="property-title">Bulk Data:</td>
                    <td><div id="slider-bulk" class="slider"></div></td>
                    <td><div id="bulk-value" class="value"></div></td>
                    <td><div>%</div></td>
                	</tr>
                	<tr>
-                   <td class="tooltip property-title" title="Time-Series Data">Time-Series Data:</td>
+                   <td class="property-title">Time-Series Data:</td>
                    <td><div id="slider-time" class="slider"></div></td>
                    <td><div id="time-value" class="value"></div></td>
                    <td><div>%</div></td>
                	</tr>
                	<tr class="spaceTop">
-                   <td class="tooltip head property-title" title="Query">Query</td>
+                   <td class="tooltip head property-title" title="Importance of Section 'Query'">Query</td>
                    <td><div id="slider-query" class="headslider"></div></td>
                	</tr>
                	<tr>
-                   <td class="tooltip property-title" title="Frequency (#Requests per Second)">Current Frequency:</td>
+                   <td class="tooltip property-title" title="#Requests per Second">Current Frequency:</td>
                    <td><div id="slider-query_freq" class="slider"></div></td>
                	</tr>
                	<tr>
-                   <td class="tooltip property-title" title="Growth Prediction">Growth Prediction:</td>
+                   <td class="tooltip property-title" title="Increase prediction of Database Requests">Growth Prediction:</td>
                    <td><div id="slider-query_prediction" class="slider"></div></td>
                	</tr>
                	<tr class="spaceTop">
-                   <td class="tooltip head property-title" title="Query Type Ratio">Query Types</td>
+                   <td class="tooltip head property-title" title="Ratio of used query types in your database environment">Query Types</td>
                    <td><div id="slider-query_types" class="headslider"></div></td>
                	</tr>
                	<tr>
-                   <td class="tooltip property-title" title="Queries by ID">by ID:</td>
+                   <td class="property-title">by ID:</td>
                    <td><div id="slider-query_type_id" class="slider"></div></td>
                    <td><div id="query_type_id-value" class="value"></div></td>
                    <td><div>%</div></td>
                	</tr>
                	<tr>
-                   <td class="tooltip property-title" title="Queries by Example">by example:</td>
+                   <td class="property-title">by example:</td>
                    <td><div id="slider-query_type_example" class="slider"></div></td>
                    <td><div id="query_type_example-value" class="value"></div></td>
                    <td><div>%</div></td>
                	</tr>
                	<tr>
-                   <td class="tooltip property-title" title="Queries by Relations">by relationship:</td>
+                   <td class="property-title">by relationship:</td>
                    <td><div id="slider-query_type_relationship" class="slider"></div></td>
                    <td><div id="query_type_relationship-value" class="value"></div></td>
                    <td><div>%</div></td>
                	</tr>
                 <tr>
-                   <td class="tooltip property-title" title="Queries by Full-Text Index">by full-text index:</td>
+                   <td class="property-title">by full-text index:</td>
                    <td><div id="slider-query_type_fulltext" class="slider"></div></td>
                    <td><div id="query_type_fulltext-value" class="value"></div></td>
                    <td><div>%</div></td>
