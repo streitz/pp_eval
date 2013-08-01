@@ -1,7 +1,6 @@
 (function ($) {
     $(document).ready(function () {
-        var features_pattern;
-        var features_db;
+        var settings;
 
         var data = {
             availability: 0,
@@ -52,14 +51,9 @@
         })
 
 
-        $.get("data/pattern.csv", function(data){
-            features_pattern = processData(data);
+        $.get("data/settings.csv", function(data){
+            settings = processData(data);
         })
-
-        // $.get("data/db.csv", function(data){
-        //     features_db = processData(data);
-        // })
-        
 
         var total = function (model) {
             var sum = 0;
@@ -73,7 +67,7 @@
         }
 
 
-        $('#pattern_load').change(function (evt) {
+        $('#settings_load').change(function (evt) {
             var files = evt.target.files;
 
             for (var i = 0, f; (f = files[i]); i++) {
@@ -82,30 +76,12 @@
                 reader.onload = (function () {
                     return function (e) {
                         var content = e.target.result
-                        features_pattern = processData(content);
+                        settings = processData(content);
                     }
                 })(f)
 
                 reader.readAsText(f)
-                $('#pattern_load').val('')
-            }
-        })
-
-        $('#db_load').change(function (evt) {
-            var files = evt.target.files;
-
-            for (var i = 0, f; (f = files[i]); i++) {
-                /* global FileReader: true */
-                var reader = new FileReader()
-                reader.onload = (function () {
-                    return function (e) {
-                        var content = e.target.result
-                        features_db = processData(content);
-                    }
-                })(f)
-
-                reader.readAsText(f)
-                $('#db_load').val('')
+                $('#settings_load').val('')
             }
         })
 
@@ -248,12 +224,9 @@
     }
 
 
-    $(document).on('click', '#import_pattern', function() {
-        $('#pattern_load').trigger('click');
+    $(document).on('click', '#import', function() {
+        $('#settings_load').trigger('click');
     });
 
-    $(document).on('click', '#import_db', function() {
-        $('#db_load').trigger('click');
-    });
 
 })(jQuery);

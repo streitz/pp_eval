@@ -168,3 +168,33 @@ div.title {
 .hidden_upload {
     display: none;
 }
+
+.buttons {
+    -moz-box-shadow:inset 0px 0px 0px 0px #ffffff;
+    -webkit-box-shadow:inset 0px 0px 0px 0px #ffffff;
+    box-shadow:inset 0px 0px 0px 0px #ffffff;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #a6a6a6) );
+    background:-moz-linear-gradient( center top, #ededed 5%, #a6a6a6 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#a6a6a6');
+    background-color:#ededed;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+    border:1px solid #dcdcdc;
+    display:inline-block;
+    color:#4d4d4d;
+    font-family:Trebuchet MS;
+    font-size:15px;
+    font-weight:bold;
+    padding:6px 25px;
+    text-decoration:none;
+    text-shadow:0px 0px 4px #ffffff;
+}.buttons:hover {
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #a6a6a6), color-stop(1, #ededed) );
+    background:-moz-linear-gradient( center top, #a6a6a6 5%, #ededed 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6a6a6', endColorstr='#ededed');
+    background-color:#a6a6a6;
+}.buttons:active {
+    position:relative;
+    top:1px;
+}

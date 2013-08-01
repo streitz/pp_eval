@@ -28,10 +28,6 @@
     <body>
         <div id="eval">
            <div class="title">Evaluation for Polyglot Persistence</div>
-           <input type="file" class="hidden_upload" id="pattern_load"/>
-           <button id="import_pattern">Import Pattern Features</button>
-           <input type="file" class="hidden_upload" id="db_load"/>
-           <button id="import_db">Import Database Features</button>
            <table>
            		  <tr class="spaceTop">
                    <td class="tooltip head property-title" title="Importance of Section 'General'">General</td>
@@ -176,30 +172,8 @@
                    <td><div>%</div></td>
                 </tr>
             </table>
-            <br/>
-            <table>
-                <tr>
-                    <td>
-                        <form method="POST" action="order.php" id="formular">
-                            <!-- <button id="submit" disabled="disabled">Evaluate!</button> -->
-                            <input type="hidden" name="user" value=""/>
-                            <input type="hidden" name="projekt" value=""/>
-                            <input type="hidden" name="kostenstelle" value=""/>
-                            <input type="hidden" name="contact1" value=""/>
-                            <input type="hidden" name="contact2" value=""/>
-                            <input type="hidden" name="cpu" value=""/>
-                            <input type="hidden" name="ram" value=""/>
-                            <input type="hidden" name="hd" value=""/>
-                            <input type="hidden" name="sc" value=""/>
-                            <input type="hidden" name="network" value=""/>
-                            <input type="hidden" name="price_ini" value=""/>
-                            <input type="hidden" name="price_mon" value=""/>
-                        </form>
-                    </td>
-                    <td>
-                    </td>
-                </tr>
-            </table>
+            <input type="file" class="hidden_upload" id="settings_load"/>
+            <button class="buttons" id="import">Import Evaluation Settings</button>
         </div>
     </body> 
 </html>
