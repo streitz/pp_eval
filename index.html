@@ -46,7 +46,7 @@
                    <td><div id="slider-requirements" class="headslider"></div></td>
                 </tr>                
                	<tr>
-                   <td class="tooltip property-title" title="(Guarantee that every request receives a response about whether it was successful or failed">Availability:</td>
+                   <td class="tooltip property-title" title="Guarantee that every request receives a response about whether it was successful or failed">Availability:</td>
                    <td><div id="slider-availability" class="slider"></div></td>
                	</tr>
                	<tr>
@@ -54,7 +54,7 @@
                    <td><div id="slider-consistency" class="slider"></div></td>
                	</tr>
 	              <tr>
-                   <td class="tooltip property-title" title="System operations continue despite arbitrary message loss or failure of part of the system">Partiation Tolerance:</td>
+                   <td class="tooltip property-title" title="System operations continue despite arbitrary message loss or failure of part of the system">Partition Tolerance:</td>
                    <td><div id="slider-ptolerance" class="slider"></div></td>
     	          </tr>
     	          <tr class="spaceTop">
@@ -66,7 +66,7 @@
                    <td><div id="slider-data_sizing" class="slider"></div></td>
                	</tr>
                	<tr>
-                   <td class="tooltip property-title" title="How much will you data increase?">Growth Prediction:</td>
+                   <td class="tooltip property-title" title="How much will your data increase?">Growth Prediction:</td>
                    <td><div id="slider-data_growth" class="slider"></div></td>
                	</tr>
                	<tr class="spaceTop">
@@ -74,33 +74,39 @@
                    <td><div id="slider-data_type" class="headslider"></div></td>
                	</tr>
                	<tr>
-                   <td class="property-title">Relational Data:</td>
+                   <td class="tooltip property-title" title="Organized in rows of fixed-size typed by column values">Relational Data:</td>
                    <td><div id="slider-relational" class="slider"></div></td>
                    <td><div id="relational-value" class="value"></div></td>
                    <td><div>%</div></td>
                	</tr>
                 <tr>
-                   <td class="property-title">Hierarchical Data:</td>
+                   <td class="property-title tooltip" title="Tree-like data structure with parent/child relationships">Hierarchical Data:</td>
                    <td><div id="slider-hierarchical" class="slider"></div></td>
                    <td><div id="hierarchical-value" class="value"></div></td>
                    <td><div>%</div></td>
                 </tr>
                 <tr>
-                   <td class="property-title">Graph Data:</td>
+                   <td class="property-title tooltip" title="Set of nodes and edges referencing other nodes">Graph Data:</td>
                    <td><div id="slider-graph" class="slider"></div></td>
                    <td><div id="graph-value" class="value"></div></td>
                    <td><div>%</div></td>
                 </tr>
                 <tr>
-                   <td class="property-title">Document Data:</td>
+                   <td class="property-title tooltip" title="Unordered data model with values and their corresponding keys">Key-Value Data:</td>
+                   <td><div id="slider-kv" class="slider"></div></td>
+                   <td><div id="kv-value" class="value"></div></td>
+                   <td><div>%</div></td>
+                </tr>
+                <tr>
+                   <td class="property-title tooltip" title="White box view on data structures with pairs of key and value fields (e.g. representable by JSON or XML)">Document Data:</td>
                    <td><div id="slider-document" class="slider"></div></td>
                    <td><div id="document-value" class="value"></div></td>
                    <td><div>%</div></td>
                 </tr>
                 <tr>
-                   <td class="property-title">Key-Value Data:</td>
-                   <td><div id="slider-kv" class="slider"></div></td>
-                   <td><div id="kv-value" class="value"></div></td>
+                   <td class="property-title tooltip" title="Black box view on data structure without knowledge of intern issues.">Binary Data:</td>
+                   <td><div id="slider-binary" class="slider"></div></td>
+                   <td><div id="binary-value" class="value"></div></td>
                    <td><div>%</div></td>
                 </tr>
                 <tr class="spaceTop">
@@ -108,29 +114,35 @@
                    <td><div id="slider-data_properties" class="headslider"></div></td>
                 </tr>
                	<tr>
-                   <td class="property-title">Transient Data:</td>
+                   <td class="property-title tooltip" title="Temporary data with no intention for durability">Transient Data:</td>
                    <td><div id="slider-transient" class="slider"></div></td>
                    <td><div id="transient-value" class="value"></div></td>
                    <td><div>%</div></td>
                	</tr>
-               	<tr>
-                   <td class="property-title">Mass Data:</td>
-                   <td><div id="slider-mass" class="slider"></div></td>
-                   <td><div id="mass-value" class="value"></div></td>
+                <tr>
+                   <td class="property-title tooltip" title="Periodical collected data by  time-triggered events">Time-Series Data:</td>
+                   <td><div id="slider-time" class="slider"></div></td>
+                   <td><div id="time-value" class="value"></div></td>
                    <td><div>%</div></td>
-               	</tr>
+                </tr>
                	<tr>
-                   <td class="property-title">Bulk Data:</td>
+                   <td class="property-title tooltip" title="Input and processing of massive binary data objects">Business Data (Bulk):</td>
                    <td><div id="slider-bulk" class="slider"></div></td>
                    <td><div id="bulk-value" class="value"></div></td>
                    <td><div>%</div></td>
                	</tr>
-               	<tr>
-                   <td class="property-title">Time-Series Data:</td>
-                   <td><div id="slider-time" class="slider"></div></td>
-                   <td><div id="time-value" class="value"></div></td>
+                <tr>
+                   <td class="property-title tooltip" title="Business data with almost no activities of modifications (e.g. bank account data)">Business Data (Cold):</td>
+                   <td><div id="slider-cold" class="slider"></div></td>
+                   <td><div id="cold-value" class="value"></div></td>
                    <td><div>%</div></td>
-               	</tr>
+                </tr>
+                <tr>
+                   <td class="property-title tooltip" title="Business data with a lot of modifications (e.g. account transactions)">Business Data (Hot):</td>
+                   <td><div id="slider-hot" class="slider"></div></td>
+                   <td><div id="hot-value" class="value"></div></td>
+                   <td><div>%</div></td>
+                </tr>
                	<tr class="spaceTop">
                    <td class="tooltip head property-title" title="Importance of Section 'Query'">Query</td>
                    <td><div id="slider-query" class="headslider"></div></td>
@@ -148,25 +160,25 @@
                    <td><div id="slider-query_types" class="headslider"></div></td>
                	</tr>
                	<tr>
-                   <td class="property-title">by ID:</td>
+                   <td class="tooltip property-title" title="Direct lookup by unique identifier">by ID:</td>
                    <td><div id="slider-query_type_id" class="slider"></div></td>
                    <td><div id="query_type_id-value" class="value"></div></td>
                    <td><div>%</div></td>
                	</tr>
                	<tr>
-                   <td class="property-title">by example:</td>
+                   <td class="tooltip property-title" title="Query by using filters on attributes (e.g. WHERE clause in RDBMS)">by example:</td>
                    <td><div id="slider-query_type_example" class="slider"></div></td>
                    <td><div id="query_type_example-value" class="value"></div></td>
                    <td><div>%</div></td>
                	</tr>
                	<tr>
-                   <td class="property-title">by relationship:</td>
+                   <td class="tooltip property-title" title="Traversing parent-to-child and child-to-parent relationships between objects.">by relationship:</td>
                    <td><div id="slider-query_type_relationship" class="slider"></div></td>
                    <td><div id="query_type_relationship-value" class="value"></div></td>
                    <td><div>%</div></td>
                	</tr>
                 <tr>
-                   <td class="property-title">by full-text index:</td>
+                   <td class="tooltip property-title" title="Lookup using full-text search.">by full-text index:</td>
                    <td><div id="slider-query_type_fulltext" class="slider"></div></td>
                    <td><div id="query_type_fulltext-value" class="value"></div></td>
                    <td><div>%</div></td>

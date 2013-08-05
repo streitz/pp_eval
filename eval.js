@@ -26,12 +26,14 @@
             graph: 0,
             hier: 0,
             doc: 0,
-            kv: 0
+            kv: 0,
+            bin: 0
         }
 
         var data_categories = {
             trans: 0,
-            mass: 0,
+            b_hot: 0,
+            b_cold: 0,
             bulk: 0,
             time: 0
         }
@@ -92,10 +94,11 @@
             var p_hier = { value: Math.round(data_structures.hier*100/total(data_structures)) }
             var p_doc = { value: Math.round(data_structures.doc*100/total(data_structures)) }
             var p_kv = { value: Math.round(data_structures.kv*100/total(data_structures)) }
+            var p_bin = { value: Math.round(data_structures.bin*100/total(data_structures)) }
 
-            var p_total1 = p_relat.value + p_graph.value + p_hier.value + p_doc.value + p_kv.value;
+            var p_total1 = p_relat.value + p_graph.value + p_hier.value + p_doc.value + p_kv.value + p_bin.value;
 
-            var maximum1 = _.max([p_relat, p_graph, p_hier, p_doc, p_kv], function (item) { return item.value })
+            var maximum1 = _.max([p_relat, p_graph, p_hier, p_doc, p_kv, p_bin], function (item) { return item.value })
 
             maximum1.value += 100 - p_total1
 
@@ -104,22 +107,25 @@
             $("#hierarchical-value").html(p_hier.value);
             $("#document-value").html(p_doc.value);
             $("#kv-value").html(p_kv.value);
+            $("#binary-value").html(p_bin.value);
 
             var p_trans = { value: Math.round(data_categories.trans*100/total(data_categories)) }
-            var p_mass = { value: Math.round(data_categories.mass*100/total(data_categories)) }
             var p_bulk = { value: Math.round(data_categories.bulk*100/total(data_categories)) }
             var p_time = { value: Math.round(data_categories.time*100/total(data_categories)) }
+            var p_hot = { value: Math.round(data_categories.b_hot*100/total(data_categories)) }
+            var p_cold = { value: Math.round(data_categories.b_cold*100/total(data_categories)) }
 
-            var p_total2 = p_trans.value + p_mass.value + p_bulk.value + p_time.value;
+            var p_total2 = p_trans.value + p_bulk.value + p_time.value + p_hot.value + p_cold.value;
 
-            var maximum2 = _.max([p_trans, p_mass, p_bulk, p_time], function (item) { return item.value })
+            var maximum2 = _.max([p_trans, p_bulk, p_time, p_cold, p_hot], function (item) { return item.value })
             
             maximum2.value += 100 - p_total2
 
             $("#transient-value").html(p_trans.value);
-            $("#mass-value").html(p_mass.value);
             $("#bulk-value").html(p_bulk.value);
             $("#time-value").html(p_time.value);
+            $("#hot-value").html(p_hot.value);
+            $("#cold-value").html(p_cold.value);
 
             var p_id = { value: Math.round(query_types.id*100/total(query_types)) }
             var p_example = { value: Math.round(query_types.example*100/total(query_types)) }
@@ -158,9 +164,11 @@
         normalSlider('#slider-graph', data_structures, 'graph')
         normalSlider('#slider-kv', data_structures, 'kv')
         normalSlider('#slider-document', data_structures, 'doc')
+        normalSlider('#slider-binary', data_structures, 'bin')
 
         normalSlider('#slider-transient', data_categories, 'trans')
-        normalSlider('#slider-mass', data_categories, 'mass')
+        normalSlider('#slider-cold', data_categories, 'b_cold')
+        normalSlider('#slider-hot', data_categories, 'b_hot')
         normalSlider('#slider-bulk', data_categories, 'bulk')
         normalSlider('#slider-time', data_categories, 'time')
 
@@ -169,13 +177,14 @@
         normalSlider('#slider-query_type_relationship', query_types, 'relation')
         normalSlider('#slider-query_type_fulltext', query_types, 'fulltext')
 
-        var labeledSlider = function (id, field, labels) {
+        var labeledSlider = function (id, field, labels, tooltips) {
             $(id).labeledslider({
                 min:  0,
                 max:  labels.length - 1,
                 step: 1,
                 tickInterval: 1,
                 tickLabels: labels,
+                tickTooltips: tooltips,
                 slide:  function(event, ui) {
                     if (data[field] !== ui.value) {
                         data[field] = ui.value
@@ -188,16 +197,20 @@
         var changes = ['none', 'marg', 'lin', 'poly', 'exp']
         var categories = ['not nec', 'not imp', 'no matter', 'imp', 'very imp']
         var categories2 = ['low', 'medium', 'high']
+        var categories3 = ['none', 'low', 'medium', 'high', 'no limit']
+
+        var tooltip1 = ['none', 'marginal', 'linear', 'polynomial', 'exponential']
 
         labeledSlider('#slider-availability', 'availability', categories)
         labeledSlider('#slider-consistency', 'consistency', categories)
         labeledSlider('#slider-ptolerance', 'ptolerance', categories)
-        labeledSlider('#slider-data_sizing', 'size', ['< 100 MB', '< 1 GB', '< 100 GB', '< 1 TB', 'TBs', 'PBs'])
-        labeledSlider('#slider-data_growth', 'growth', changes)
+        labeledSlider('#slider-data_sizing', 'size', ['< 100 MB', '< 1 GB', '< 10 GB', '< 100 GB', '< 1 TB', '>= 1 TB'])
+        labeledSlider('#slider-data_growth', 'growth', changes, tooltip1)
         labeledSlider('#slider-query_freq', 'frequency', ['<= 1', '10', '100', '1000', '10000', '>=100000'])
-        labeledSlider('#slider-query_prediction', 'f_change', changes)
+        labeledSlider('#slider-query_prediction', 'f_change', changes, tooltip1)
+
         labeledSlider('#slider-innovation', 'innovation', categories2)
-        labeledSlider('#slider-investment', 'investment', categories2)
+        labeledSlider('#slider-investment', 'investment', categories3)
 
         labeledSlider('#slider-general', 'general', categories2)
         labeledSlider('#slider-requirements', 'requirements', categories2)
