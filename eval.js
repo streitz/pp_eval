@@ -1,5 +1,6 @@
 (function ($) {
     $(document).ready(function () {
+        // imported settings
         var settings;
 
         var data = {
@@ -12,13 +13,13 @@
             f_change: 0,
             innovation: 0,
             investment: 0,
-            general: 0,
-            requirements: 0,
-            data: 0,
-            data_structures: 0,
-            data_properties: 0,
-            query: 0,
-            query_types: 0
+            general: 1,
+            requirements: 1,
+            data: 1,
+            data_type: 1,
+            data_properties: 1,
+            query: 1,
+            query_types: 1
         }
 
         var data_structures = {
@@ -49,7 +50,7 @@
         $(".tooltip").tooltip({
             showBody: " - ",
             fade: 250,
-            position: { my: "left top", at: "left bottom-30", collision: "flipfit" }
+            position: { my: "left center", at: "center", collision: "flipfit" }
         })
 
 
@@ -159,6 +160,7 @@
             }) 
         }
 
+        // category: data structure types
         normalSlider('#slider-relational', data_structures, 'relat')
         normalSlider('#slider-hierarchical', data_structures, 'hier')
         normalSlider('#slider-graph', data_structures, 'graph')
@@ -166,12 +168,14 @@
         normalSlider('#slider-document', data_structures, 'doc')
         normalSlider('#slider-binary', data_structures, 'bin')
 
+        // category: data properties
         normalSlider('#slider-transient', data_categories, 'trans')
         normalSlider('#slider-cold', data_categories, 'b_cold')
         normalSlider('#slider-hot', data_categories, 'b_hot')
         normalSlider('#slider-bulk', data_categories, 'bulk')
         normalSlider('#slider-time', data_categories, 'time')
 
+        // category: query types
         normalSlider('#slider-query_type_id', query_types, 'id')
         normalSlider('#slider-query_type_example', query_types, 'example')
         normalSlider('#slider-query_type_relationship', query_types, 'relation')
@@ -190,28 +194,39 @@
                         data[field] = ui.value
                         update()
                     }
-                } 
+                }
             })
+            $(id).labeledslider('value',data[field])
         }
 
+        // labels
         var changes = ['none', 'marg', 'lin', 'poly', 'exp']
-        var categories = ['not nec', 'not imp', 'no matter', 'imp', 'very imp']
+        var categories = ['-2', '-1', '0', '+1', '+2']
         var categories2 = ['low', 'medium', 'high']
         var categories3 = ['none', 'low', 'medium', 'high', 'no limit']
 
+        // tooltips
+        var tooltip = ['not necessary', 'not important', 'no matter', 'important', 'very important']
         var tooltip1 = ['none', 'marginal', 'linear', 'polynomial', 'exponential']
 
-        labeledSlider('#slider-availability', 'availability', categories)
-        labeledSlider('#slider-consistency', 'consistency', categories)
-        labeledSlider('#slider-ptolerance', 'ptolerance', categories)
+        // category: requirements
+        labeledSlider('#slider-availability', 'availability', categories, tooltip)
+        labeledSlider('#slider-consistency', 'consistency', categories, tooltip)
+        labeledSlider('#slider-ptolerance', 'ptolerance', categories, tooltip)
+
+        // category: data
         labeledSlider('#slider-data_sizing', 'size', ['< 100 MB', '< 1 GB', '< 10 GB', '< 100 GB', '< 1 TB', '>= 1 TB'])
         labeledSlider('#slider-data_growth', 'growth', changes, tooltip1)
+
+        // category: query
         labeledSlider('#slider-query_freq', 'frequency', ['<= 1', '10', '100', '1000', '10000', '>=100000'])
         labeledSlider('#slider-query_prediction', 'f_change', changes, tooltip1)
 
+        // category: general
         labeledSlider('#slider-innovation', 'innovation', categories2)
         labeledSlider('#slider-investment', 'investment', categories3)
 
+        // categories
         labeledSlider('#slider-general', 'general', categories2)
         labeledSlider('#slider-requirements', 'requirements', categories2)
         labeledSlider('#slider-data', 'data', categories2)
@@ -220,8 +235,7 @@
         labeledSlider('#slider-query', 'query', categories2)
         labeledSlider('#slider-query_types', 'query_types', categories2)
 
-
-        update();
+        update()
     });
 
     function processData(content) {

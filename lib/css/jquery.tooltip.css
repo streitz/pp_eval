@@ -1,5 +1,5 @@
 #tooltip {
-	position: { my: "left top+15", at: "left bottom", collision: "flipfit" };
+	position: { my: "left top", at: "left bottom", collision: "flipfit" };
 	z-index: 3000;
 	border: 1px solid #111;
 	background-color: #eee;
