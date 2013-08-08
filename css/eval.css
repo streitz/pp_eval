@@ -27,6 +27,10 @@ tr.spaceTop > td
     padding-right: 20px;
 }
 
+select.transaction {
+    width: 404px;
+}
+
 div#eval {
     top: 40px;
     left: 40px;

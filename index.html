@@ -148,13 +148,24 @@
                    <td><div id="slider-query" class="headslider"></div></td>
                	</tr>
                	<tr>
-                   <td class="tooltip property-title" title="#Requests per Second">Current Frequency:</td>
+                   <td class="tooltip property-title" title="#requests per second in peak situations">Current Frequency:</td>
                    <td><div id="slider-query_freq" class="slider"></div></td>
                	</tr>
                	<tr>
                    <td class="tooltip property-title" title="Increase prediction of Database Requests">Growth Prediction:</td>
                    <td><div id="slider-query_prediction" class="slider"></div></td>
                	</tr>
+                <tr>
+                   <td class="tooltip property-title" title="Do you need transaction to be performed?">Transactional processing:</td>
+                   <td>
+                    <select class="transaction">
+                      <option value="no" selected="selected">No</option>
+                      <option value="yes">Yes</option>
+                    </select>
+
+                    <!-- <div id="slider-transaction" class="slider"></div> -->
+                  </td>
+                </tr>
                	<tr class="spaceTop">
                    <td class="tooltip head property-title" title="Ratio of used query types in your database environment">Query Types</td>
                    <td><div id="slider-query_types" class="headslider"></div></td>

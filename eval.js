@@ -19,7 +19,8 @@
             data_type: 1,
             data_properties: 1,
             query: 1,
-            query_types: 1
+            query_types: 1,
+            transaction: 0
         }
 
         var data_structures = {
@@ -201,18 +202,18 @@
 
         // labels
         var changes = ['none', 'marg', 'lin', 'poly', 'exp']
-        var categories = ['-2', '-1', '0', '+1', '+2']
+        var categories = ['not necessary', 'optional', 'important']
         var categories2 = ['low', 'medium', 'high']
         var categories3 = ['none', 'low', 'medium', 'high', 'no limit']
+        var categories4 = ['no', 'yes']
 
         // tooltips
-        var tooltip = ['not necessary', 'not important', 'no matter', 'important', 'very important']
         var tooltip1 = ['none', 'marginal', 'linear', 'polynomial', 'exponential']
 
         // category: requirements
-        labeledSlider('#slider-availability', 'availability', categories, tooltip)
-        labeledSlider('#slider-consistency', 'consistency', categories, tooltip)
-        labeledSlider('#slider-ptolerance', 'ptolerance', categories, tooltip)
+        labeledSlider('#slider-availability', 'availability', categories)
+        labeledSlider('#slider-consistency', 'consistency', categories)
+        labeledSlider('#slider-ptolerance', 'ptolerance', categories)
 
         // category: data
         labeledSlider('#slider-data_sizing', 'size', ['< 100 MB', '< 1 GB', '< 10 GB', '< 100 GB', '< 1 TB', '>= 1 TB'])
@@ -221,6 +222,7 @@
         // category: query
         labeledSlider('#slider-query_freq', 'frequency', ['<= 1', '10', '100', '1000', '10000', '>=100000'])
         labeledSlider('#slider-query_prediction', 'f_change', changes, tooltip1)
+        labeledSlider('#slider-transaction', 'transaction', categories4)
 
         // category: general
         labeledSlider('#slider-innovation', 'innovation', categories2)
