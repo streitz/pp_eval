@@ -4,15 +4,15 @@
         var settings;
 
         var data = {
-            availability: 0,
-            consistency: 0,
-            ptolerance: 0,
-            size: 0,
-            growth: 0,
-            frequency: 0,
-            f_change: 0,
+            availability: 2,
+            consistency: 2,
+            ptolerance: 1,
+            size: 2,
+            growth: 2,
+            frequency: 3,
+            f_change: 1,
             innovation: 0,
-            investment: 0,
+            investment: 2,
             general: 1,
             requirements: 1,
             data: 1,
@@ -20,11 +20,11 @@
             data_properties: 1,
             query: 1,
             query_types: 1,
-            transaction: 0
+            transaction: "yes"
         }
 
         var data_structures = {
-            relat: 0,
+            relat: 100,
             graph: 0,
             hier: 0,
             doc: 0,
@@ -33,7 +33,7 @@
         }
 
         var data_categories = {
-            trans: 0,
+            trans: 100,
             b_hot: 0,
             b_cold: 0,
             bulk: 0,
@@ -41,7 +41,7 @@
         }
 
         var query_types = {
-            id: 0,
+            id: 100,
             example: 0,
             relation: 0,
             fulltext: 0
@@ -158,7 +158,7 @@
                         update()
                     }
                 }
-            }) 
+            })
         }
 
         // category: data structure types
@@ -205,7 +205,6 @@
         var categories = ['not necessary', 'optional', 'important']
         var categories2 = ['low', 'medium', 'high']
         var categories3 = ['none', 'low', 'medium', 'high', 'no limit']
-        var categories4 = ['no', 'yes']
 
         // tooltips
         var tooltip1 = ['none', 'marginal', 'linear', 'polynomial', 'exponential']
@@ -222,7 +221,6 @@
         // category: query
         labeledSlider('#slider-query_freq', 'frequency', ['<= 1', '10', '100', '1000', '10000', '>=100000'])
         labeledSlider('#slider-query_prediction', 'f_change', changes, tooltip1)
-        labeledSlider('#slider-transaction', 'transaction', categories4)
 
         // category: general
         labeledSlider('#slider-innovation', 'innovation', categories2)
@@ -236,6 +234,11 @@
         labeledSlider('#slider-data_properties', 'data_properties', categories2)
         labeledSlider('#slider-query', 'query', categories2)
         labeledSlider('#slider-query_types', 'query_types', categories2)
+
+        $('select.transaction').change(function () {
+            model.transaction = $('select.transaction').val();
+            update();
+        });
 
         update()
     });

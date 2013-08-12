@@ -36,25 +36,27 @@
                 <tr>
                    <td class="tooltip property-title" title="How much money are you willing to spend?">Investment:</td>
                    <td><div id="slider-investment" class="slider"></div></td>
+                   <td><div><input type="checkbox" name="checkbox-investment" value="unknown-investment"></div></td>
                 </tr>
                 <tr>
                    <td class="tooltip property-title" title="How much innovation (new database products) are you willing to use?">Innovation:</td>
                    <td><div id="slider-innovation" class="slider"></div></td>
+                   <td><input type="checkbox" name="checkbox-innovation" value="unknown-innovation"></td>
                 </tr>
                 <tr class="spaceTop">
                    <td class="tooltip head property-title" title="Importance of Section 'Requirements'">Requirements</td>
                    <td><div id="slider-requirements" class="headslider"></div></td>
                 </tr>                
                	<tr>
-                   <td class="tooltip property-title" title="Guarantee that every request receives a response about whether it was successful or failed">Availability:</td>
+                   <td class="tooltip property-title" title="Guarantee that every operation must terminate in an intended response.">Availability:</td>
                    <td><div id="slider-availability" class="slider"></div></td>
                	</tr>
                	<tr>
-                   <td class="tooltip property-title" title="All nodes see the same data at the same time">Consistency:</td>
+                   <td class="tooltip property-title" title="Perception that a set of operations has occured all at once.">Consistency:</td>
                    <td><div id="slider-consistency" class="slider"></div></td>
                	</tr>
 	              <tr>
-                   <td class="tooltip property-title" title="System operations continue despite arbitrary message loss or failure of part of the system">Partition Tolerance:</td>
+                   <td class="tooltip property-title" title="System operations continue despite arbitrary message loss or failure of individual components of the system">Partition Tolerance:</td>
                    <td><div id="slider-ptolerance" class="slider"></div></td>
     	          </tr>
     	          <tr class="spaceTop">
@@ -64,10 +66,12 @@
                	<tr>
                    <td class="tooltip property-title" title="How big is your current data?">Current Sizing:</td>
                    <td><div id="slider-data_sizing" class="slider"></div></td>
+                   <td><input type="checkbox" name="checkbox-data_sizing" value="unknown-data_sizing"></td>
                	</tr>
                	<tr>
                    <td class="tooltip property-title" title="How much will your data increase?">Growth Prediction:</td>
                    <td><div id="slider-data_growth" class="slider"></div></td>
+                   <td><input type="checkbox" name="checkbox-data_growth" value="unknown-data_growth"></td>
                	</tr>
                	<tr class="spaceTop">
                    <td class="tooltip head property-title" title="Ratio of used data structure types in your database environment">Data Structure Types</td>
@@ -150,20 +154,20 @@
                	<tr>
                    <td class="tooltip property-title" title="#requests per second in peak situations">Current Frequency:</td>
                    <td><div id="slider-query_freq" class="slider"></div></td>
+                   <td><input type="checkbox" name="checkbox-query_freq" value="unknown-query_freq"></td>
                	</tr>
                	<tr>
                    <td class="tooltip property-title" title="Increase prediction of Database Requests">Growth Prediction:</td>
                    <td><div id="slider-query_prediction" class="slider"></div></td>
+                   <td><input type="checkbox" name="checkbox-query_prediction" value="unknown-query_prediction"></td>
                	</tr>
                 <tr>
                    <td class="tooltip property-title" title="Do you need transaction to be performed?">Transactional processing:</td>
                    <td>
                     <select class="transaction">
-                      <option value="no" selected="selected">No</option>
-                      <option value="yes">Yes</option>
+                      <option value="yes" selected="selected">Yes</option>
+                      <option value="no">No</option>
                     </select>
-
-                    <!-- <div id="slider-transaction" class="slider"></div> -->
                   </td>
                 </tr>
                	<tr class="spaceTop">
