@@ -18,6 +18,10 @@ td {
     vertical-align: top;
 }
 
+td.checkbox {
+    text-align: right;
+}
+
 tr.spaceTop > td
 {
   padding-top: 4em;
@@ -94,6 +98,7 @@ button#submit[disabled] {
     background-color: #cccccc;
 }
 
+
 input {
     background: #ffffff;
     border: 1px solid #cccccc;
@@ -102,6 +107,13 @@ input {
 
 input#input-user {
     background: #f0f0f0;
+}
+
+input.checkbox {
+    width: auto !important;
+    min-width: 0;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 div.ui-slider {
@@ -203,3 +215,82 @@ div.title {
     position:relative;
     top:1px;
 }
+
+input[type=checkbox].css-checkbox {
+      position: absolute; 
+    overflow: hidden; 
+    clip: rect(0 0 0 0); 
+    height:1px; 
+    width:1px; 
+    margin:-1px; 
+    padding:0;
+    border:0;
+}
+
+input[type=checkbox].css-checkbox + label.css-label {
+    padding-left:20px;
+    height:15px; 
+    display:inline-block;
+    line-height:15px;
+    background-repeat:no-repeat;
+    background-position: 0 0;
+    font-size:15px;
+    vertical-align:middle;
+    cursor:pointer;
+}
+
+input[type=checkbox].css-checkbox:checked + label.css-label {
+    background-position: 0 -15px;
+}
+
+.checkbox-style{background-image:url('../pics/checkbox.png');}
+
+input[type=checkbox].css-checkbox.med + label.css-label.med {
+    padding-left:22px;
+    height:17px; 
+    display:inline-block;
+    line-height:17px;
+    background-repeat:no-repeat;
+    background-position: 0 0;
+    font-size:15px;
+    vertical-align:middle;
+    cursor:pointer;
+}
+
+input[type=checkbox].css-checkbox.med:checked + label.css-label.med {
+
+    background-position: 0 -17px;
+}
+input[type=checkbox].css-checkbox.sme + label.css-label.sme {
+    padding-left:22px;
+    height:16px; 
+    display:inline-block;
+    line-height:16px;
+    background-repeat:no-repeat;
+    background-position: 0 0;
+    font-size:15px;
+    vertical-align:middle;
+    cursor:pointer;
+}
+
+input[type=checkbox].css-checkbox.sme:checked + label.css-label.sme{
+
+    background-position: 0 -16px;
+}
+input[type=checkbox].css-checkbox.lrg + label.css-label.lrg {
+    padding-left:22px;
+    height:20px; 
+    display:inline-block;
+    line-height:20px;
+    background-repeat:no-repeat;
+    background-position: 0 0;
+    font-size:15px;
+    vertical-align:middle;
+    cursor:pointer;
+}
+
+input[type=checkbox].css-checkbox.lrg:checked + label.css-label.lrg{
+
+    background-position: 0 -20px;
+}
+

@@ -3,14 +3,23 @@
         // imported settings
         var settings;
 
+        var backup_data = {
+            data_sizing: 0,
+            data_growth: 0,
+            query_freq: 0,
+            query_prediction: 0,
+            innovation: 0,
+            investment: 0
+        }
+
         var data = {
             availability: 2,
             consistency: 2,
             ptolerance: 1,
-            size: 2,
-            growth: 2,
-            frequency: 3,
-            f_change: 1,
+            data_sizing: 2,
+            data_growth: 2,
+            query_freq: 3,
+            query_prediction: 1,
             innovation: 0,
             investment: 2,
             general: 1,
@@ -20,7 +29,7 @@
             data_properties: 1,
             query: 1,
             query_types: 1,
-            transaction: "yes"
+            transaction: 1
         }
 
         var data_structures = {
@@ -88,6 +97,36 @@
                 $('#settings_load').val('')
             }
         })
+
+        $('input:checkbox').change(function(){
+            var name = this.id.replace(/checkbox-/, '')
+
+            if(this.checked) {
+                $('#slider-' + name).labeledslider('disable')
+                backup_data[name] = data[name]
+                data[name] = -1
+            }
+            else {
+                $('#slider-' + name).labeledslider('enable')
+                data[name] = backup_data[name]
+            }
+
+            var inv = $('#slider-investment').labeledslider('option').disabled
+            var inno = $('#slider-innovation').labeledslider('option').disabled
+            if(inv && inno)
+                $('#slider-general').labeledslider('disable')
+            else
+                $('#slider-general').labeledslider('enable')
+
+
+            var size = $('#slider-data_sizing').labeledslider('option').disabled
+            var growth = $('#slider-data_growth').labeledslider('option').disabled
+            if(size && growth)
+                $('#slider-data').labeledslider('disable')
+            else
+                $('#slider-data').labeledslider('enable')            
+
+        });
 
 
         var update = function () {
@@ -193,7 +232,6 @@
                 slide:  function(event, ui) {
                     if (data[field] !== ui.value) {
                         data[field] = ui.value
-                        update()
                     }
                 }
             })
@@ -215,12 +253,12 @@
         labeledSlider('#slider-ptolerance', 'ptolerance', categories)
 
         // category: data
-        labeledSlider('#slider-data_sizing', 'size', ['< 100 MB', '< 1 GB', '< 10 GB', '< 100 GB', '< 1 TB', '>= 1 TB'])
-        labeledSlider('#slider-data_growth', 'growth', changes, tooltip1)
+        labeledSlider('#slider-data_sizing', 'data_sizing', ['&le;100 MB', '&le;1 GB', '&le;10 GB', '&le;100 GB', '&le;1 TB', '>1 TB'])
+        labeledSlider('#slider-data_growth', 'data_growth', changes, tooltip1)
 
         // category: query
-        labeledSlider('#slider-query_freq', 'frequency', ['<= 1', '10', '100', '1000', '10000', '>=100000'])
-        labeledSlider('#slider-query_prediction', 'f_change', changes, tooltip1)
+        labeledSlider('#slider-query_freq', 'query_freq', ['&le;1', '10', '100', '1000', '10000', '&ge;100000'])
+        labeledSlider('#slider-query_prediction', 'query_prediction', changes, tooltip1)
 
         // category: general
         labeledSlider('#slider-innovation', 'innovation', categories2)
@@ -236,12 +274,15 @@
         labeledSlider('#slider-query_types', 'query_types', categories2)
 
         $('select.transaction').change(function () {
-            model.transaction = $('select.transaction').val();
-            update();
+            if ($('select.transaction').val() == 'yes')
+                data.transaction = 1
+            else
+                data.transaction = 0   
         });
 
         update()
     });
+
 
     function processData(content) {
         var contentLines = content.split(/\r\n|\n/);

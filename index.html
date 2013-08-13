@@ -7,6 +7,7 @@
         <!-- jQuery UI -->
         <link type="text/css" href="/lib/css/jquery-ui.css" rel="stylesheet"/>
         <script type="text/javascript" src="lib/jquery.js"></script>
+        <script type="text/javascript" src="lib/jquery-migrate.js"></script>
         <script type="text/javascript" src="lib/jquery-ui.js"></script>
 
         <!-- jQuery UI extensions -->
@@ -36,12 +37,24 @@
                 <tr>
                    <td class="tooltip property-title" title="How much money are you willing to spend?">Investment:</td>
                    <td><div id="slider-investment" class="slider"></div></td>
-                   <td><div><input type="checkbox" name="checkbox-investment" value="unknown-investment"></div></td>
+                   <td class="checkbox">
+                    <input type="checkbox" id="checkbox-investment" class="css-checkbox lrg"/>
+                    <label for="checkbox-investment" name="checkbox-investment_lbl" class="css-label lrg checkbox-style"></label>
+                    </td>
+                    <td>
+                    <div class="checkbox_label">unknown</div>
+                   </td>
                 </tr>
                 <tr>
                    <td class="tooltip property-title" title="How much innovation (new database products) are you willing to use?">Innovation:</td>
                    <td><div id="slider-innovation" class="slider"></div></td>
-                   <td><input type="checkbox" name="checkbox-innovation" value="unknown-innovation"></td>
+                   <td class="checkbox">
+                    <input type="checkbox" id="checkbox-innovation" class="css-checkbox lrg"/>
+                    <label for="checkbox-innovation" name="checkbox-innovation_lbl" class="css-label lrg checkbox-style"></label>
+                    </td>
+                    <td>
+                    <div class="checkbox_label">unknown</div>
+                   </td>
                 </tr>
                 <tr class="spaceTop">
                    <td class="tooltip head property-title" title="Importance of Section 'Requirements'">Requirements</td>
@@ -66,12 +79,26 @@
                	<tr>
                    <td class="tooltip property-title" title="How big is your current data?">Current Sizing:</td>
                    <td><div id="slider-data_sizing" class="slider"></div></td>
-                   <td><input type="checkbox" name="checkbox-data_sizing" value="unknown-data_sizing"></td>
+                   <td class="checkbox">
+                    <input type="checkbox" id="checkbox-data_sizing" class="css-checkbox lrg"/>
+                    <label for="checkbox-data_sizing" name="checkbox-data_sizing_lbl" class="css-label lrg checkbox-style"></label>
+                    </td>
+                    <td>
+                    <div class="checkbox_label">unknown</div>
+                   </td>
+                   </td>
                	</tr>
                	<tr>
                    <td class="tooltip property-title" title="How much will your data increase?">Growth Prediction:</td>
                    <td><div id="slider-data_growth" class="slider"></div></td>
-                   <td><input type="checkbox" name="checkbox-data_growth" value="unknown-data_growth"></td>
+                   <td class="checkbox">
+                    <input type="checkbox" id="checkbox-data_growth" class="css-checkbox lrg"/>
+                    <label for="checkbox-data_growth" name="checkbox-data_growth_lbl" class="css-label lrg checkbox-style"></label>
+                    </td>
+                    <td>
+                    <div class="checkbox_label">unknown</div>
+                   </td>
+                   </td>
                	</tr>
                	<tr class="spaceTop">
                    <td class="tooltip head property-title" title="Ratio of used data structure types in your database environment">Data Structure Types</td>
@@ -154,12 +181,26 @@
                	<tr>
                    <td class="tooltip property-title" title="#requests per second in peak situations">Current Frequency:</td>
                    <td><div id="slider-query_freq" class="slider"></div></td>
-                   <td><input type="checkbox" name="checkbox-query_freq" value="unknown-query_freq"></td>
+                   <td class="checkbox">
+                    <input type="checkbox" id="checkbox-query_freq" class="css-checkbox lrg"/>
+                    <label for="checkbox-query_freq" name="checkbox-query_freq_lbl" class="css-label lrg checkbox-style"></label>
+                    </td>
+                    <td>
+                    <div class="checkbox_label">unknown</div>
+                   </td>
+                   </td>
                	</tr>
                	<tr>
                    <td class="tooltip property-title" title="Increase prediction of Database Requests">Growth Prediction:</td>
                    <td><div id="slider-query_prediction" class="slider"></div></td>
-                   <td><input type="checkbox" name="checkbox-query_prediction" value="unknown-query_prediction"></td>
+                   <td class="checkbox">
+                    <input type="checkbox" id="checkbox-query_prediction" class="css-checkbox lrg"/>
+                    <label for="checkbox-query_prediction" name="checkbox-query_prediction_lbl" class="css-label lrg checkbox-style"></label>
+                    </td>
+                    <td>
+                    <div class="checkbox_label">unknown</div>
+                   </td>
+                   </td>
                	</tr>
                 <tr>
                    <td class="tooltip property-title" title="Do you need transaction to be performed?">Transactional processing:</td>
