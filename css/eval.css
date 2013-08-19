@@ -167,15 +167,20 @@ div.title {
     filter: dropshadow(color=#ffffff, offx=1, offy=1);
 }
 
-#tooltip {
-    border: 1px solid #cb6;
-    background-color: #fe8;
-    padding: 5px;
-    opacity: 1.0;
-    width: 300px;
-    -webkit-box-shadow: 1px 1px 8px 1px;
-    box-shadow: 1px 1px 8px 1px; 
+.ui-tooltip-content {
     font-size: 8pt;
+    font: bold 14px "Helvetica Neue", Sans-Serif;
+}
+
+.ui-tooltip {
+    border: 1px #fff;
+    background-color: rgba(255, 238, 136, 0.85) !important;
+    background: none;
+    border-radius: 4px;
+    /*opacity: .9;*/
+    -webkit-box-shadow: 1px 1px 8px 1px;
+    box-shadow: 1px 1px 8px 1px;
+
 }
 
 .head {

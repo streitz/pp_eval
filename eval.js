@@ -60,6 +60,7 @@
         $(".tooltip").tooltip({
             showBody: " - ",
             fade: 250,
+            tooltipClass: "custom-tooltip-styling",
             position: { my: "left center", at: "center", collision: "flipfit" }
         })
 
