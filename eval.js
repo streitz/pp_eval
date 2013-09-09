@@ -6,8 +6,7 @@
         var backup_data = {
             data_sizing: 0,
             data_growth: 0,
-            query_freq: 0,
-            query_prediction: 0,
+            transaction: 0,
             innovation: 0,
             investment: 0
         }
@@ -18,7 +17,6 @@
             ptolerance: 1,
             data_sizing: 2,
             data_growth: 2,
-            query_freq: 3,
             query_prediction: 1,
             innovation: 0,
             investment: 2,
@@ -27,9 +25,9 @@
             data: 1,
             data_type: 1,
             data_properties: 1,
-            query: 1,
+            data_processing: 1,
             query_types: 1,
-            transaction: 1
+            transaction: 2
         }
 
         var data_structures = {
@@ -102,6 +100,8 @@
         $('input:checkbox').change(function(){
             var name = this.id.replace(/checkbox-/, '')
 
+            // TODO, you have to ckeck wheather its a labled or normal slider
+
             if(this.checked) {
                 $('#slider-' + name).labeledslider('disable')
                 backup_data[name] = data[name]
@@ -118,6 +118,12 @@
                 $('#slider-general').labeledslider('disable')
             else
                 $('#slider-general').labeledslider('enable')
+
+            var transaction = $('#slider-transaction').labeledslider('option').disabled
+            if (transaction)
+                $('#slider-data_processing').labeledslider('disable')
+            else
+                $('#slider-data_processing').labeledslider('enable')
 
 
             var size = $('#slider-data_sizing').labeledslider('option').disabled
@@ -257,9 +263,8 @@
         labeledSlider('#slider-data_sizing', 'data_sizing', ['&le;100 MB', '&le;1 GB', '&le;10 GB', '&le;100 GB', '&le;1 TB', '>1 TB'])
         labeledSlider('#slider-data_growth', 'data_growth', changes, tooltip1)
 
-        // category: query
-        labeledSlider('#slider-query_freq', 'query_freq', ['&le;1', '10', '100', '1000', '10000', '&ge;100000'])
-        labeledSlider('#slider-query_prediction', 'query_prediction', changes, tooltip1)
+        // category: data processing
+        labeledSlider('#slider-transaction', 'transaction', ['0%', '25%', '50%', '75%', '100%'])
 
         // category: general
         labeledSlider('#slider-innovation', 'innovation', categories2)
@@ -271,7 +276,7 @@
         labeledSlider('#slider-data', 'data', categories2)
         labeledSlider('#slider-data_type', 'data_type', categories2)
         labeledSlider('#slider-data_properties', 'data_properties', categories2)
-        labeledSlider('#slider-query', 'query', categories2)
+        labeledSlider('#slider-data_processing', 'data_processing', categories2)
         labeledSlider('#slider-query_types', 'query_types', categories2)
 
         $('select.transaction').change(function () {
