@@ -40,7 +40,7 @@ div#eval {
     left: 40px;
     background: #ffffff;
     position: relative;
-    width: 780px;
+    width: 880px;
     font-family: sans-serif;
     font-size: 12pt;
     padding: 20px;
@@ -78,27 +78,6 @@ div.value {
 }
 
 
-button#submit {
-    width: 120px;
-    height: 60px;
-    font-style: bold;
-    font-size: 14pt;
-    background-color: #006600;
-    color: #ffffff;
-    border: 0px;
-    border-bottom-right-radius: 10px; 
-    border-bottom-left-radius: 10px; 
-    border-top-left-radius: 10px; 
-    border-top-right-radius: 10px; 
-    cursor: pointer;
-    margin-right: 20px;
-}
-
-button#submit[disabled] {
-    background-color: #cccccc;
-}
-
-
 input {
     background: #ffffff;
     border: 1px solid #cccccc;
@@ -120,6 +99,10 @@ div.ui-slider {
     /*background: #ffffff !important;*/
     border: 1px solid #cccccc;
     cursor: pointer;
+}
+
+.disabled {
+    background: gray !important;
 }
 
 a.ui-slider-handle {

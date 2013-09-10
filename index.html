@@ -21,6 +21,8 @@
         <link type="text/css" href="lib/css/jquery.ui.tooltip.css" rel="stylesheet"/>
         <script type="text/javascript" src="lib/jquery.ui.tooltip.js"></script>
 
+        <!-- lo-dash -->
+        <script type="text/javascript" src="lib/lodash.min.js"></script>
 
         <!-- Custom Eval -->
         <link href="css/eval.css" rel="stylesheet"/>
@@ -132,7 +134,7 @@
                    <td><div id="relational-value" class="value"></div></td>
                    <td><div>%</div></td>
                    <td class="checkbox">
-                    <input type="checkbox" id="checkbox-relational" class="css-checkbox lrg"/>
+                    <input type="checkbox" id="checkbox-relational" class="css-checkbox lrg simple data_structures"/>
                     <label for="checkbox-relational" name="checkbox-relational_lbl" class="css-label lrg checkbox-style"></label>
                     </td>
                     <td>
@@ -145,7 +147,7 @@
                    <td><div id="hierarchical-value" class="value"></div></td>
                    <td><div>%</div></td>
                    <td class="checkbox">
-                    <input type="checkbox" id="checkbox-hierarchical" class="css-checkbox lrg"/>
+                    <input type="checkbox" id="checkbox-hierarchical" class="css-checkbox lrg simple data_structures"/>
                     <label for="checkbox-hierarchical" name="checkbox-hierarchical_lbl" class="css-label lrg checkbox-style"></label>
                     </td>
                     <td>
@@ -158,7 +160,7 @@
                    <td><div id="graph-value" class="value"></div></td>
                    <td><div>%</div></td>
                    <td class="checkbox">
-                    <input type="checkbox" id="checkbox-graph" class="css-checkbox lrg"/>
+                    <input type="checkbox" id="checkbox-graph" class="css-checkbox lrg simple data_structures"/>
                     <label for="checkbox-graph" name="checkbox-graph_lbl" class="css-label lrg checkbox-style"></label>
                     </td>
                     <td>
@@ -171,7 +173,7 @@
                    <td><div id="kv-value" class="value"></div></td>
                    <td><div>%</div></td>
                    <td class="checkbox">
-                    <input type="checkbox" id="checkbox-kv" class="css-checkbox lrg"/>
+                    <input type="checkbox" id="checkbox-kv" class="css-checkbox lrg simple data_structures"/>
                     <label for="checkbox-kv" name="checkbox-kv_lbl" class="css-label lrg checkbox-style"></label>
                     </td>
                     <td>
@@ -184,7 +186,7 @@
                    <td><div id="document-value" class="value"></div></td>
                    <td><div>%</div></td>
                    <td class="checkbox">
-                    <input type="checkbox" id="checkbox-document" class="css-checkbox lrg"/>
+                    <input type="checkbox" id="checkbox-document" class="css-checkbox lrg simple data_structures"/>
                     <label for="checkbox-document" name="checkbox-document_lbl" class="css-label lrg checkbox-style"></label>
                     </td>
                     <td>
@@ -197,7 +199,7 @@
                    <td><div id="binary-value" class="value"></div></td>
                    <td><div>%</div></td>
                    <td class="checkbox">
-                    <input type="checkbox" id="checkbox-binary" class="css-checkbox lrg"/>
+                    <input type="checkbox" id="checkbox-binary" class="css-checkbox lrg simple data_structures"/>
                     <label for="checkbox-binary" name="checkbox-binary_lbl" class="css-label lrg checkbox-style"></label>
                     </td>
                     <td>
@@ -214,7 +216,7 @@
                    <td><div id="transient-value" class="value"></div></td>
                    <td><div>%</div></td>
                    <td class="checkbox">
-                    <input type="checkbox" id="checkbox-transient" class="css-checkbox lrg"/>
+                    <input type="checkbox" id="checkbox-transient" class="css-checkbox lrg simple data_properties"/>
                     <label for="checkbox-transient" name="checkbox-transient_lbl" class="css-label lrg checkbox-style"></label>
                     </td>
                     <td>
@@ -227,7 +229,7 @@
                    <td><div id="time-value" class="value"></div></td>
                    <td><div>%</div></td>
                    <td class="checkbox">
-                    <input type="checkbox" id="checkbox-time" class="css-checkbox lrg"/>
+                    <input type="checkbox" id="checkbox-time" class="css-checkbox lrg simple data_properties"/>
                     <label for="checkbox-time" name="checkbox-time_lbl" class="css-label lrg checkbox-style"></label>
                     </td>
                     <td>
@@ -240,7 +242,7 @@
                    <td><div id="bulk-value" class="value"></div></td>
                    <td><div>%</div></td>
                    <td class="checkbox">
-                    <input type="checkbox" id="checkbox-bulk" class="css-checkbox lrg"/>
+                    <input type="checkbox" id="checkbox-bulk" class="css-checkbox lrg simple data_properties"/>
                     <label for="checkbox-bulk" name="checkbox-bulk_lbl" class="css-label lrg checkbox-style"></label>
                     </td>
                     <td>
@@ -253,7 +255,7 @@
                    <td><div id="cold-value" class="value"></div></td>
                    <td><div>%</div></td>
                    <td class="checkbox">
-                    <input type="checkbox" id="checkbox-cold" class="css-checkbox lrg"/>
+                    <input type="checkbox" id="checkbox-cold" class="css-checkbox lrg simple data_properties"/>
                     <label for="checkbox-cold" name="checkbox-cold_lbl" class="css-label lrg checkbox-style"></label>
                     </td>
                     <td>
@@ -266,7 +268,7 @@
                    <td><div id="hot-value" class="value"></div></td>
                    <td><div>%</div></td>
                    <td class="checkbox">
-                    <input type="checkbox" id="checkbox-hot" class="css-checkbox lrg"/>
+                    <input type="checkbox" id="checkbox-hot" class="css-checkbox lrg simple data_properties"/>
                     <label for="checkbox-hot" name="checkbox-hot_lbl" class="css-label lrg checkbox-style"></label>
                     </td>
                     <td>
@@ -297,6 +299,13 @@
                    <td><div id="slider-query_type_id" class="slider"></div></td>
                    <td><div id="query_type_id-value" class="value"></div></td>
                    <td><div>%</div></td>
+                   <td class="checkbox">
+                    <input type="checkbox" id="checkbox-query_type_id" class="css-checkbox lrg simple query_type"/>
+                    <label for="checkbox-query_type_id" name="checkbox-query_type_id_lbl" class="css-label lrg checkbox-style"></label>
+                    </td>
+                    <td>
+                    <div class="checkbox_label">unknown</div>
+                   </td>
                	</tr>
                	<tr>
                    <td class="tooltip property-title" title="Query by using filters on attributes (e.g. WHERE clause in RDBMS)">by example:</td>
@@ -304,7 +313,7 @@
                    <td><div id="query_type_example-value" class="value"></div></td>
                    <td><div>%</div></td>
                    <td class="checkbox">
-                    <input type="checkbox" id="checkbox-query_type_example" class="css-checkbox lrg"/>
+                    <input type="checkbox" id="checkbox-query_type_example" class="css-checkbox lrg simple query_type"/>
                     <label for="checkbox-query_type_example" name="checkbox-query_type_example_lbl" class="css-label lrg checkbox-style"></label>
                     </td>
                     <td>
@@ -317,7 +326,7 @@
                    <td><div id="query_type_relationship-value" class="value"></div></td>
                    <td><div>%</div></td>
                    <td class="checkbox">
-                    <input type="checkbox" id="checkbox-query_type_relationship" class="css-checkbox lrg"/>
+                    <input type="checkbox" id="checkbox-query_type_relationship" class="css-checkbox lrg simple query_type"/>
                     <label for="checkbox-query_type_relationship" name="checkbox-query_type_relationship_lbl" class="css-label lrg checkbox-style"></label>
                     </td>
                     <td>
@@ -330,7 +339,7 @@
                    <td><div id="query_type_fulltext-value" class="value"></div></td>
                    <td><div>%</div></td>
                    <td class="checkbox">
-                    <input type="checkbox" id="checkbox-query_type_fulltext" class="css-checkbox lrg"/>
+                    <input type="checkbox" id="checkbox-query_type_fulltext" class="css-checkbox lrg simple query_type"/>
                     <label for="checkbox-query_type_fulltext" name="checkbox-query_type_fulltext_lbl" class="css-label lrg checkbox-style"></label>
                     </td>
                     <td>
