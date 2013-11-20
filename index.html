@@ -2,7 +2,7 @@
 <html> 
     <head> 
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>Evaluation of Polyglot Persistence</title>
+        <title>Polyglot Persistence - Self Assessment</title>
         
         <!-- underscore.js -->
         <script type="text/javascript" src="lib/underscore-min.js"></script>
@@ -31,11 +31,13 @@
     </head>
     <body>
         <div id="eval">
-           <div class="title">Evaluation for Polyglot Persistence</div>
+           <div class="title">Polyglot Persistence - Self Assessment</div>
+           <div id="final-advice" class="value"></div>
            <table>
            		  <tr class="spaceTop">
                    <td class="tooltip head property-title" title="Importance of Section 'General'">General</td>
                    <td><div id="slider-general" class="headslider"></div></td>
+                   <td><div id="general-advice" class="value"></div></td>
                	</tr>
                 <tr>
                    <td class="tooltip property-title" title="How much money are you willing to spend?">Investment:</td>
@@ -62,6 +64,7 @@
                 <tr class="spaceTop">
                    <td class="tooltip head property-title" title="Importance of Section 'Data'">Data</td>
                    <td><div id="slider-data" class="headslider"></div></td>
+                   <td><div id="data-advice" class="value"></div></td>
                 </tr>
                 <tr>
                    <td class="tooltip property-title" title="How big is your current data?">Current Sizing:</td>
@@ -90,6 +93,7 @@
                 <tr class="spaceTop">
                    <td class="tooltip head property-title" title="Importance of Section 'Requirements'">Requirements</td>
                    <td><div id="slider-requirements" class="headslider"></div></td>
+                   <td><div id="requirements-advice" class="value"></div></td>
                 </tr>                
                	<tr>
                    <td class="tooltip property-title" title="Guarantee that every operation must terminate in an intended response.">Availability:</td>
@@ -127,6 +131,7 @@
                	<tr class="spaceTop">
                    <td class="tooltip head property-title" title="Ratio of used data structure types in your database environment">Data Structure Types</td>
                    <td><div id="slider-data_type" class="headslider"></div></td>
+                   <td><div id="data_type-avg" class="value"></div></td>
                	</tr>
                	<tr>
                    <td class="tooltip property-title" title="Organized in rows of fixed-size typed by column values">Relational Data:</td>
@@ -209,6 +214,7 @@
                 <tr class="spaceTop">
                    <td class="tooltip head property-title" title="Ratio of used data properties in your database environment">Data Properties</td>
                    <td><div id="slider-data_properties" class="headslider"></div></td>
+                   <td><div id="data_properties-avg" class="value"></div></td>
                 </tr>
                	<tr>
                    <td class="property-title tooltip" title="Temporary data with no intention for durability">Transient Data:</td>
@@ -278,6 +284,7 @@
                	<tr class="spaceTop">
                    <td class="tooltip head property-title" title="Importance of Section 'Query'">Data Processing</td>
                    <td><div id="slider-data_processing" class="headslider"></div></td>
+                   <td><div id="data_processing-advice" class="value"></div></td>
                	</tr>
                 <tr>
                    <td class="tooltip property-title" title="How much transaction processing do you need?">Transactions:</td>
@@ -293,6 +300,7 @@
                	<tr class="spaceTop">
                    <td class="tooltip head property-title" title="Ratio of used query types in your database environment">Query Types</td>
                    <td><div id="slider-query_types" class="headslider"></div></td>
+                   <td><div id="query_types-avg" class="value"></div></td>
                	</tr>
                	<tr>
                    <td class="tooltip property-title" title="Direct lookup by unique identifier">by ID:</td>
@@ -347,8 +355,8 @@
                    </td>
                 </tr>
             </table>
-            <input type="file" class="hidden_upload" id="settings_load"/>
-            <button class="buttons" id="import">Import Evaluation Settings</button>
+            <!-- <input type="file" class="hidden_upload" id="settings_load"/>
+            <button class="buttons" id="import">Import Evaluation Settings</button> -->
         </div>
     </body> 
 </html>

@@ -21,6 +21,24 @@
             query_type: 1
         }
 
+        var unknown = {
+            general: 1,
+            investment: 0,
+            innovation: 1,
+            data: 1,
+            data_sizing: 2,
+            data_growth: 2,
+            requirements: 1,
+            availability: 1,
+            consistency: 1,
+            ptolerance: 1,
+            data_type: 1,
+            data_properties: 1,
+            data_processing: 1,
+            transaction: 2,
+            query_type: 1
+        }
+
         var data_structures = {
             relational: 50,
             hierarchical: 50,
@@ -44,6 +62,17 @@
             query_type_example: 50,
             query_type_relationship: 50,
             query_type_fulltext: 50
+        }
+
+        var advice = {
+            final: 0,
+            general: 0,
+            data: 0,
+            requirements: 0,
+            data_processing: 0,
+            data_types: 0,
+            data_properties: 0,
+            query_types: 0
         }
 
 
@@ -92,26 +121,26 @@
 
 
 
-        $(".tooltip").tooltip({
-            showBody: " - ",
+        $('.tooltip').tooltip({
+            showBody: ' - ',
             fade: 250,
-            tooltipClass: "custom-tooltip-styling",
-            position: { my: "left center", at: "center", collision: "flipfit" }
+            tooltipClass: 'custom-tooltip-styling',
+            position: { my: 'left center', at: 'center', collision: 'flipfit' }
         })
 
 
-        $.get("data/settings.csv", function(data){
+        $.get('data/settings.csv', function(data){
             settings = processData(data);
         })
 
         var total = function (model) {
             var sum = 0;
-            for(key in model) {
+            for(var key in model) {
                 sum += model[key];
             }
-            if (sum == 0) {
+            if (sum === 0) {
                 sum = 2;
-            };
+            }
             return sum;
         }
 
@@ -154,7 +183,6 @@
 
                 if(target.checked) {
                     $('#slider-' + name).slider('disable')
-                    // TODO: change value to 0
                     eval('backup_' + group)[name] = eval(group)[name]
                     eval(group)[name] = 0
                     update()
@@ -171,7 +199,7 @@
                 if(target.checked) {
                     $('#slider-' + name).labeledslider('disable')
                     backup_data[name] = data[name]
-                    data[name] = -1
+                    data[name] = unknown[name]
                 }
                 else {
                     $('#slider-' + name).labeledslider('enable')
@@ -185,40 +213,75 @@
         var data_properties_off = false
         var query_type_off = false
 
+        // inicates whether the group was backuped in the previous step or not
+        var backuped = {
+            general: false,
+            data: false,
+            requirements: false,
+            data_type: false,
+            data_properties: false,
+            data_processing: false,
+            query_types: false
+        }
+
         $('input:checkbox').change(function (){
             changeSliderStatus(this)
 
             // group: general
             var inv = $('#slider-investment').labeledslider('option').disabled
             var inno = $('#slider-innovation').labeledslider('option').disabled
-            if(inv && inno)
+            if(inv && inno) {
                 $('#slider-general').labeledslider('disable')
-            else
-                $('#slider-general').labeledslider('enable')
+                backup_data.general = data.general
+                data.general = unknown.general
+                backuped.general = true
+            } else if (backuped.general) {
+                $('#slider-general').labeledslider('enable');
+                data.general = backup_data.general
+                backuped.general = false
+            }
 
             // group: data
             var size = $('#slider-data_sizing').labeledslider('option').disabled
             var growth = $('#slider-data_growth').labeledslider('option').disabled
-            if(size && growth)
+            if(size && growth) {
                 $('#slider-data').labeledslider('disable')
-            else
-                $('#slider-data').labeledslider('enable')            
+                backup_data.data = data.data.
+                data.data = unknown.data
+                backuped.data = true
+            } else if (backuped.data) {
+                $('#slider-data').labeledslider('enable')
+                data.data = backup_data.data
+                backuped.data = false
+            }
 
             // group: data processing
             var transaction = $('#slider-transaction').labeledslider('option').disabled
-            if (transaction)
+            if (transaction) {
                 $('#slider-data_processing').labeledslider('disable')
-            else
+                backup_data.data_processing = data.data_processing
+                data.data_processing = unknown.data_processing
+                backuped.data_processing = true
+            } else if (backuped.data_processing) {
                 $('#slider-data_processing').labeledslider('enable')
+                data.data_processing = backup_data.data_processing
+                backuped.data_processing = false
+            }
 
             // group: requirements
             var a = $('#slider-availability').labeledslider('option').disabled
             var c = $('#slider-consistency').labeledslider('option').disabled
             var p = $('#slider-ptolerance').labeledslider('option').disabled
-            if(c && a && p)
+            if(c && a && p) {
                 $('#slider-requirements').labeledslider('disable')
-            else
+                backup_data.requirements = data.requirements
+                data.requirements = unknown.requirements
+                backuped.requirements = true
+            } else if (backuped.requirements) {
                 $('#slider-requirements').labeledslider('enable')
+                data.requirements = backup_data.requirements
+                backuped.requirements = false
+            }
 
             // group: data structure types
             var rel = $('#slider-relational').slider('option').disabled
@@ -231,9 +294,14 @@
             if(rel && hier && graph && kv && doc && bin) {
                 $('#slider-data_type').labeledslider('disable')
                 data_types_off = true
-            } else {
+                backup_data.data_type = data.data_type
+                data.data_type = unknown.data_type
+                backuped.data_type = true
+            } else if (backuped.data_type) {
                 $('#slider-data_type').labeledslider('enable')
                 data_types_off = false
+                data.data_type = backup_data.data_type
+                backuped.data_type = false
             }
 
 
@@ -247,11 +315,15 @@
             if(trans && time && bulk && cold && hot) {
                 $('#slider-data_properties').labeledslider('disable')
                 data_properties_off = true
-            } else {
+                backup_data.data_properties = data.data_properties
+                data.data_properties = unknown.data_properties
+                backuped.data_properties = true
+            } else if (backuped.data_properties) {
                 $('#slider-data_properties').labeledslider('enable')
                 data_properties_off = false
+                data.data_properties = backup_data.data_properties
+                backuped.data_properties = false
             }
-
 
 
             // group: query types
@@ -263,9 +335,14 @@
             if(id && ex && rela && ft) {
                 $('#slider-query_types').labeledslider('disable')
                 query_type_off = true
-            } else {
+                backup_data.query_type = data.query_type
+                data.query_type = unknown.query_type
+                backuped.query_types = true
+            } else if (backuped.query_types) {
                 $('#slider-query_types').labeledslider('enable')
                 query_type_off = false
+                data.query_type = backup_data.query_type
+                backuped.query_types = false
             }
 
 
@@ -274,7 +351,53 @@
         });
 
 
+        var calcAdvice = function () {
+            var sumWeight = 0.5 * Math.pow(2, data.general) + 0.5 * Math.pow(2, data.data) + 0.5 * Math.pow(2, data.requirements) + 0.5 * Math.pow(2, data.data_processing) + 0.5 * Math.pow(2, data.data_type) + 0.5 * Math.pow(2, data.data_properties) + 0.5 * Math.pow(2, data.query_type);
+
+            // * 0.5 * Math.pow(2, data.general)
+            advice.general = 0.5 * Math.pow(2, data.innovation) * (1.0 - data.investment * 0.2) / 2
+
+            // * 0.5 * Math.pow(2, data.data)
+            advice.data = (data.data_sizing + 1) * (data.data_growth + 1) / 30
+
+            // * 0.5 * Math.pow(2, data.requirements)
+            var sum = data.availability + data.consistency + data.ptolerance
+            if (sum > 5)
+                advice.requirements = 1
+            else if (sum > 4)
+                advice.requirements = 0.5
+            else
+                advice.requirements = 0
+
+            // * 0.5 * Math.pow(2, data.data_processing)
+            advice.data_processing = 1/ Math.pow(2, data.transaction)
+
+            var weightGeneral = advice.general * 0.5 * Math.pow(2, data.general)
+            var weightData = advice.data * 0.5 * Math.pow(2, data.data)
+            var weightRequirements = advice.requirements * 0.5 * Math.pow(2, data.requirements)
+            var weightDataProcessing = advice.data_processing * 0.5 * Math.pow(2, data.data_processing)
+            var weightQueryType = advice.query_types * 0.5 * Math.pow(2, data.query_type)
+            var weightDataProperties = advice.data_properties * 0.5 * Math.pow(2, data.data_properties)
+            var weightDataType = advice.data_types * 0.5 * Math.pow(2, data.data_type)
+
+
+            advice.final = (weightGeneral + weightData + weightRequirements + weightDataProcessing + weightQueryType + weightDataProperties + weightDataType) / sumWeight;
+
+        }
+
+
+
         var update = function () {
+            var advices = ['general', 'data', 'requirements', 'data_processing', 'final']
+
+            calcAdvice()
+
+            _.forEach(advices, function(value) {
+                var container = '#' + value + '-advice'
+                $(container).html(eval('advice.' + value));
+            })
+            
+
             var p_relat = { value: Math.round(data_structures.relational*100/total(data_structures)) }
             var p_graph = { value: Math.round(data_structures.graph*100/total(data_structures)) }
             var p_hierarchical = { value: Math.round(data_structures.hierarchical*100/total(data_structures)) }
@@ -282,26 +405,31 @@
             var p_kv = { value: Math.round(data_structures.kv*100/total(data_structures)) }
             var p_bin = { value: Math.round(data_structures.binary*100/total(data_structures)) }
 
-            var p_total1 = p_relat.value + p_graph.value + p_hierarchical.value + p_doc.value + p_kv.value + p_bin.value;
+            var p_total1 = p_relat.value + p_graph.value + p_hierarchical.value + p_doc.value + p_kv.value + p_bin.value
 
             var maximum1 = _.max([p_relat, p_graph, p_hierarchical, p_doc, p_kv, p_bin], function (item) { return item.value })
 
             maximum1.value += 100 - p_total1
 
+            var avg1 = ((100 - maximum1.value) / maximum1.value) / (17/3)
+            advice.data_types = avg1
+            $('#data_type-avg').html(avg1)
+
+
             if (!data_types_off) {
-                $("#relational-value").html(p_relat.value);
-                $("#graph-value").html(p_graph.value);
-                $("#hierarchical-value").html(p_hierarchical.value);
-                $("#document-value").html(p_doc.value);
-                $("#kv-value").html(p_kv.value);
-                $("#binary-value").html(p_bin.value);
+                $('#relational-value').html(p_relat.value);
+                $('#graph-value').html(p_graph.value);
+                $('#hierarchical-value').html(p_hierarchical.value);
+                $('#document-value').html(p_doc.value);
+                $('#kv-value').html(p_kv.value);
+                $('#binary-value').html(p_bin.value);
             } else {
-                $("#relational-value").html(0);
-                $("#graph-value").html(0);
-                $("#hierarchical-value").html(0);
-                $("#document-value").html(0);
-                $("#kv-value").html(0);
-                $("#binary-value").html(0);
+                $('#relational-value').html(0);
+                $('#graph-value').html(0);
+                $('#hierarchical-value').html(0);
+                $('#document-value').html(0);
+                $('#kv-value').html(0);
+                $('#binary-value').html(0);
             }
 
             var p_transient = { value: Math.round(data_properties.transient*100/total(data_properties)) }
@@ -313,22 +441,26 @@
             var p_total2 = p_transient.value + p_bulk.value + p_time.value + p_hot.value + p_cold.value;
 
             var maximum2 = _.max([p_transient, p_bulk, p_time, p_cold, p_hot], function (item) { return item.value })
-            
+
             maximum2.value += 100 - p_total2
+
+            var avg2 = ((100 - maximum2.value) / maximum2.value) / 4
+            advice.data_properties = avg2
+            $('#data_properties-avg').html(avg2);
 
 
             if (!data_properties_off) {
-                $("#transient-value").html(p_transient.value);
-                $("#bulk-value").html(p_bulk.value);
-                $("#time-value").html(p_time.value);
-                $("#hot-value").html(p_hot.value);
-                $("#cold-value").html(p_cold.value);
+                $('#transient-value').html(p_transient.value);
+                $('#bulk-value').html(p_bulk.value);
+                $('#time-value').html(p_time.value);
+                $('#hot-value').html(p_hot.value);
+                $('#cold-value').html(p_cold.value);
             } else {
-                $("#transient-value").html(0);
-                $("#bulk-value").html(0);
-                $("#time-value").html(0);
-                $("#hot-value").html(0);
-                $("#cold-value").html(0);
+                $('#transient-value').html(0);
+                $('#bulk-value').html(0);
+                $('#time-value').html(0);
+                $('#hot-value').html(0);
+                $('#cold-value').html(0);
             }
 
             var p_id = { value: Math.round(query_type.query_type_id*100/total(query_type)) }
@@ -339,20 +471,25 @@
             var p_total3 = p_id.value + p_example.value + p_relation.value + p_fulltext.value;
 
             var maximum3 = _.max([p_id, p_example, p_relation, p_fulltext], function (item) { return item.value })
-            
+
             maximum3.value += 100 - p_total3
+
+            var avg3 = ((100 - maximum3.value) / maximum3.value) / 3
+            advice.query_types = avg3
+            $('#query_types-avg').html(avg3);
+
 
 
             if (!query_type_off) {
-                $("#query_type_id-value").html(p_id.value);
-                $("#query_type_example-value").html(p_example.value);
-                $("#query_type_relationship-value").html(p_relation.value);
-                $("#query_type_fulltext-value").html(p_fulltext.value);
+                $('#query_type_id-value').html(p_id.value);
+                $('#query_type_example-value').html(p_example.value);
+                $('#query_type_relationship-value').html(p_relation.value);
+                $('#query_type_fulltext-value').html(p_fulltext.value);
             } else {
-                $("#query_type_id-value").html(0);
-                $("#query_type_example-value").html(0);
-                $("#query_type_relationship-value").html(0);
-                $("#query_type_fulltext-value").html(0);
+                $('#query_type_id-value').html(0);
+                $('#query_type_example-value').html(0);
+                $('#query_type_relationship-value').html(0);
+                $('#query_type_fulltext-value').html(0);
             }
         }
 
@@ -403,6 +540,7 @@
                 slide:  function(event, ui) {
                     if (data[field] !== ui.value) {
                         data[field] = ui.value
+                        update()
                     }
                 }
             })
