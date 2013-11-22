@@ -1,8 +1,5 @@
 (function ($) {
     $(document).ready(function () {
-        // imported settings
-        var settings;
-
         var data = {
             general: 1,
             investment: 2,
@@ -120,18 +117,7 @@
         }
 
 
-
-        $('.tooltip').tooltip({
-            showBody: ' - ',
-            fade: 250,
-            tooltipClass: 'custom-tooltip-styling',
-            position: { my: 'left center', at: 'center', collision: 'flipfit' }
-        })
-
-
-        $.get('data/settings.csv', function(data){
-            settings = processData(data);
-        })
+        $('[data-toggle="tooltip"]').tooltip()
 
         var total = function (model) {
             var sum = 0;
@@ -143,26 +129,6 @@
             }
             return sum;
         }
-
-
-        $('#settings_load').change(function (evt) {
-            var files = evt.target.files;
-
-            for (var i = 0, f; (f = files[i]); i++) {
-                /* global FileReader: true */
-                var reader = new FileReader()
-                reader.onload = (function () {
-                    return function (e) {
-                        var content = e.target.result
-                        settings = processData(content);
-                    }
-                })(f)
-
-                reader.readAsText(f)
-                $('#settings_load').val('')
-            }
-        })
-
 
         var checkGroup = function (classes) {
             if(_.contains(classes, 'data_structures'))
@@ -185,15 +151,10 @@
                     $('#slider-' + name).slider('disable')
                     eval('backup_' + group)[name] = eval(group)[name]
                     eval(group)[name] = 0
-                    update()
-                    $('#' + name + '-value').fadeTo(0,0.2)
-
                 }
                 else {
                     $('#slider-' + name).slider('enable')
                     eval(group)[name] = eval('backup_' + group)[name]
-                    update()
-                    $('#' + name + '-value').fadeTo(0,1.0)
                 }
             } else {
                 if(target.checked) {
@@ -206,7 +167,8 @@
                     data[name] = backup_data[name]
                 }
             }
-            
+          
+          update()
         }
 
         var data_types_off = false
@@ -232,11 +194,14 @@
             var inno = $('#slider-innovation').labeledslider('option').disabled
             if(inv && inno) {
                 $('#slider-general').labeledslider('disable')
+                $('#icon-general').css('opacity', '0.125')
+                $('#icon-general').css('color', 'black')
                 backup_data.general = data.general
                 data.general = unknown.general
                 backuped.general = true
             } else if (backuped.general) {
                 $('#slider-general').labeledslider('enable');
+                $('#icon-general').css('opacity', '0.7')
                 data.general = backup_data.general
                 backuped.general = false
             }
@@ -246,11 +211,14 @@
             var growth = $('#slider-data_growth').labeledslider('option').disabled
             if(size && growth) {
                 $('#slider-data').labeledslider('disable')
-                backup_data.data = data.data.
+                $('#icon-data').css('opacity', '0.125')
+                $('#icon-data').css('color', 'black')
+                backup_data.data = data.data
                 data.data = unknown.data
                 backuped.data = true
             } else if (backuped.data) {
                 $('#slider-data').labeledslider('enable')
+                $('#icon-data').css('opacity', '0.7')
                 data.data = backup_data.data
                 backuped.data = false
             }
@@ -259,11 +227,14 @@
             var transaction = $('#slider-transaction').labeledslider('option').disabled
             if (transaction) {
                 $('#slider-data_processing').labeledslider('disable')
+                $('#icon-data_processing').css('opacity', '0.125')
+                $('#icon-data_processing').css('color', 'black')
                 backup_data.data_processing = data.data_processing
                 data.data_processing = unknown.data_processing
                 backuped.data_processing = true
             } else if (backuped.data_processing) {
                 $('#slider-data_processing').labeledslider('enable')
+                $('#icon-data_processing').css('opacity', '0.7')
                 data.data_processing = backup_data.data_processing
                 backuped.data_processing = false
             }
@@ -274,11 +245,14 @@
             var p = $('#slider-ptolerance').labeledslider('option').disabled
             if(c && a && p) {
                 $('#slider-requirements').labeledslider('disable')
+                $('#icon-requirements').css('opacity', '0.125')
+                $('#icon-requirements').css('color', 'black')
                 backup_data.requirements = data.requirements
                 data.requirements = unknown.requirements
                 backuped.requirements = true
             } else if (backuped.requirements) {
                 $('#slider-requirements').labeledslider('enable')
+                $('#icon-requirements').css('opacity', '0.7')
                 data.requirements = backup_data.requirements
                 backuped.requirements = false
             }
@@ -293,12 +267,15 @@
 
             if(rel && hier && graph && kv && doc && bin) {
                 $('#slider-data_type').labeledslider('disable')
+                $('#icon-data_type').css('opacity', '0.125')
+                $('#icon-data_type').css('color', 'black')
                 data_types_off = true
                 backup_data.data_type = data.data_type
                 data.data_type = unknown.data_type
                 backuped.data_type = true
             } else if (backuped.data_type) {
                 $('#slider-data_type').labeledslider('enable')
+                $('#icon-data_type').css('opacity', '0.7')
                 data_types_off = false
                 data.data_type = backup_data.data_type
                 backuped.data_type = false
@@ -314,12 +291,15 @@
 
             if(trans && time && bulk && cold && hot) {
                 $('#slider-data_properties').labeledslider('disable')
+                $('#icon-data_properties').css('opacity', '0.125')
+                $('#icon-data_properties').css('color', 'black')
                 data_properties_off = true
                 backup_data.data_properties = data.data_properties
                 data.data_properties = unknown.data_properties
                 backuped.data_properties = true
             } else if (backuped.data_properties) {
                 $('#slider-data_properties').labeledslider('enable')
+                $('#icon-data_properties').css('opacity', '0.7')
                 data_properties_off = false
                 data.data_properties = backup_data.data_properties
                 backuped.data_properties = false
@@ -334,12 +314,15 @@
 
             if(id && ex && rela && ft) {
                 $('#slider-query_types').labeledslider('disable')
+                $('#icon-query_types').css('opacity', '0.125')
+                $('#icon-query_types').css('color', 'black')
                 query_type_off = true
                 backup_data.query_type = data.query_type
                 data.query_type = unknown.query_type
                 backuped.query_types = true
             } else if (backuped.query_types) {
                 $('#slider-query_types').labeledslider('enable')
+                $('#icon-query_types').css('opacity', '0.7')
                 query_type_off = false
                 data.query_type = backup_data.query_type
                 backuped.query_types = false
@@ -351,16 +334,39 @@
         });
 
 
+        var getColor = function (value) {
+            var color = ''
+
+            if (value > 0.5)
+                color = 'rgba(' + Math.round((0.5 - (value - 0.5)) * 2 * 255) + ',255,0,1.0)'
+            else
+                color = 'rgba(255,' + Math.round(value * 2 * 255) + ',0,1.0)'
+
+            return color
+        }
+
+
         var calcAdvice = function () {
             var sumWeight = 0.5 * Math.pow(2, data.general) + 0.5 * Math.pow(2, data.data) + 0.5 * Math.pow(2, data.requirements) + 0.5 * Math.pow(2, data.data_processing) + 0.5 * Math.pow(2, data.data_type) + 0.5 * Math.pow(2, data.data_properties) + 0.5 * Math.pow(2, data.query_type);
 
-            // * 0.5 * Math.pow(2, data.general)
+            var color = ''
+
             advice.general = 0.5 * Math.pow(2, data.innovation) * (1.0 - data.investment * 0.2) / 2
 
-            // * 0.5 * Math.pow(2, data.data)
+            // if(!($('#slider-general').labeledslider('option').disabled)){
+            //     color = getColor(advice.general)
+            //     $('#icon-general').css('color', color)
+            // }
+
+
             advice.data = (data.data_sizing + 1) * (data.data_growth + 1) / 30
 
-            // * 0.5 * Math.pow(2, data.requirements)
+            // if(!($('#slider-data').labeledslider('option').disabled)){
+            //     color = getColor(advice.data)
+            //     $('#icon-data').css('color', color)
+            // }
+
+
             var sum = data.availability + data.consistency + data.ptolerance
             if (sum > 5)
                 advice.requirements = 1
@@ -369,8 +375,37 @@
             else
                 advice.requirements = 0
 
-            // * 0.5 * Math.pow(2, data.data_processing)
+            // if(!($('#slider-requirements').labeledslider('option').disabled)){
+            //     color = getColor(advice.requirements)
+            //     $('#icon-requirements').css('color', color)
+            // }
+
+
             advice.data_processing = 1/ Math.pow(2, data.transaction)
+
+            // if(!($('#slider-data_processing').labeledslider('option').disabled)){
+            //     color = getColor(advice.data_processing)
+            //     $('#icon-data_processing').css('color', color)
+            // }
+
+
+            // if(!($('#slider-data_type').labeledslider('option').disabled)){
+            //     color = getColor(advice.data_types)
+            //     $('#icon-data_type').css('color', color)
+            // }
+
+
+            // if(!($('#slider-data_properties').labeledslider('option').disabled)){
+            //     color = getColor(advice.data_properties)
+            //     $('#icon-data_properties').css('color', color)
+            // }
+
+
+            // if(!($('#slider-query_types').labeledslider('option').disabled)){
+            //     color = getColor(advice.query_types)
+            //     $('#icon-query_types').css('color', color)
+            // }
+
 
             var weightGeneral = advice.general * 0.5 * Math.pow(2, data.general)
             var weightData = advice.data * 0.5 * Math.pow(2, data.data)
@@ -383,21 +418,22 @@
 
             advice.final = (weightGeneral + weightData + weightRequirements + weightDataProcessing + weightQueryType + weightDataProperties + weightDataType) / sumWeight;
 
+            
+            color = getColor(advice.final)
+
+            var width = advice.final * 100 + '%'
+            
+            $('#recommendation').css('width', width)
+            $('#recommendation').css('background-color', color)
+            $('#thumb-up').css('font-size', 1 + advice.final + 'em')
+            $('#thumb-down').css('font-size', 2 - advice.final + 'em')
+
+
         }
 
 
 
         var update = function () {
-            var advices = ['general', 'data', 'requirements', 'data_processing', 'final']
-
-            calcAdvice()
-
-            _.forEach(advices, function(value) {
-                var container = '#' + value + '-advice'
-                $(container).html(eval('advice.' + value));
-            })
-            
-
             var p_relat = { value: Math.round(data_structures.relational*100/total(data_structures)) }
             var p_graph = { value: Math.round(data_structures.graph*100/total(data_structures)) }
             var p_hierarchical = { value: Math.round(data_structures.hierarchical*100/total(data_structures)) }
@@ -491,6 +527,8 @@
                 $('#query_type_relationship-value').html(0);
                 $('#query_type_fulltext-value').html(0);
             }
+
+            calcAdvice()
         }
 
         var normalSlider = function (id, model, field) {
@@ -558,8 +596,11 @@
 
         // category: requirements
         labeledSlider('#slider-availability', 'availability', categories)
+        $('span', $('#slider-availability-div')).last().css('margin-left', '-50px')
         labeledSlider('#slider-consistency', 'consistency', categories)
+        $('span', $('#slider-consistency-div')).last().css('margin-left', '-50px')
         labeledSlider('#slider-ptolerance', 'ptolerance', categories)
+        $('span', $('#slider-ptolerance-div')).last().css('margin-left', '-50px')
 
         // category: data
         labeledSlider('#slider-data_sizing', 'data_sizing', ['&le;100 MB', '&le;1 GB', '&le;10 GB', '&le;100 GB', '&le;1 TB', '>1 TB'])
@@ -571,36 +612,37 @@
         // category: general
         labeledSlider('#slider-innovation', 'innovation', categories2)
         labeledSlider('#slider-investment', 'investment', categories3)
+        $('span', $('#slider-investment-div')).last().css('margin-left', '-40px')
 
         // categories
         labeledSlider('#slider-general', 'general', categories2)
+        $('span', $('#slider-general-div')).first().css('margin-right', '-25px')
+        $('span', $('#slider-general-div')).last().css('margin-left', '-35px')
+        
         labeledSlider('#slider-requirements', 'requirements', categories2)
+        $('span', $('#slider-requirements-div')).first().css('margin-right', '-25px')
+        $('span', $('#slider-requirements-div')).last().css('margin-left', '-35px')
+        
         labeledSlider('#slider-data', 'data', categories2)
+        $('span', $('#slider-data-div')).first().css('margin-right', '-25px')
+        $('span', $('#slider-data-div')).last().css('margin-left', '-35px')
+        
         labeledSlider('#slider-data_type', 'data_type', categories2)
+        $('span', $('#slider-data_type-div')).first().css('margin-right', '-25px')
+        $('span', $('#slider-data_type-div')).last().css('margin-left', '-35px')
+        
         labeledSlider('#slider-data_properties', 'data_properties', categories2)
+        $('span', $('#slider-data_properties-div')).first().css('margin-right', '-25px')
+        $('span', $('#slider-data_properties-div')).last().css('margin-left', '-35px')
+        
         labeledSlider('#slider-data_processing', 'data_processing', categories2)
+        $('span', $('#slider-data_processing-div')).first().css('margin-right', '-25px')
+        $('span', $('#slider-data_processing-div')).last().css('margin-left', '-35px')
+        
         labeledSlider('#slider-query_types', 'query_type', categories2)
+        $('span', $('#slider-query_types-div')).first().css('margin-right', '-25px')
+        $('span', $('#slider-query_types-div')).last().css('margin-left', '-35px')
 
         update()
     });
-
-
-    function processData(content) {
-        var contentLines = content.split(/\r\n|\n/);
-        var lines = [];
-
-        for (var i=0; i<contentLines.length; i++) {
-            var data = contentLines[i].split(';');
-            lines.push(data);
-        }
-
-        return lines;
-    }
-
-
-    $(document).on('click', '#import', function() {
-        $('#settings_load').trigger('click');
-    });
-
-
 })(jQuery);
