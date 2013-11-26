@@ -117,6 +117,37 @@
         }
 
 
+        $('#lang_en').on('click', function() {
+            changeLanguage('en')
+            $("#data_processing")[0].style.marginTop='15px'
+            $("#data_type")[0].style.marginTop='7px'
+            $("#data_properties")[0].style.marginTop='15px'
+            $("#query_types")[0].style.marginTop='15px'
+        });
+
+        $('#lang_de').on('click', function() {
+            changeLanguage('de')
+            $("#data_processing")[0].style.marginTop='7px'
+            $("#data_type")[0].style.marginTop='15px'            
+            $("#data_properties")[0].style.marginTop='7px'
+            $("#query_types")[0].style.marginTop='7px'
+        });
+
+        var changeLanguage = function (lang) {
+            i18n.setLng(lang, function (){
+                updateLanguage()
+            })
+
+        }
+
+        var updateLanguage = function () {
+            $('[data-i18n]').i18n()
+        }
+
+        i18n.init({ resGetPath: 'locale/__lng__.json' , lng: 'en', fallbackLng: 'en', preload: ['de']}, function() {
+            updateLanguage()
+        });
+        
         $('[data-toggle="tooltip"]').tooltip()
 
         var total = function (model) {

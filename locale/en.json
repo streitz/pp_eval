@@ -1,0 +1,98 @@
+{
+	"title": "Polyglot Persistence - Self Assessment",
+	"unknown": "n/a",
+	
+	"label": {
+	 	"general": {
+	 		"title": "General",
+	  	"investment": "Investment",
+	  	"innovation": "Innovation"
+	  },
+	  "data": {
+	  	"title": "Data",
+	  	"sizing": "Current Sizing",
+	  	"growth": "Growth Predition"
+	  },
+	  "data_processing": {
+	  	"title": "Data Processing",
+	  	"transaction": "Transactions"
+	  },
+	  "requirements": {
+	  	"title": "Requirements",
+	  	"availability": "Availability",
+	  	"consistency": "Consistency",
+	  	"ptolerance": "Partition Tolerance"
+	  },
+	  "data_type": {
+	  	"title": "Data Structure Types",
+	  	"relational": "Relational Data",
+	  	"hierarchical": "Hierarchical Data",
+	  	"graph": "Graph Data",
+	  	"kv": "Key-Value Data",
+	  	"document": "Document Data",
+	  	"binary": "Binary Data"
+	  },
+	  "data_properties": {
+	  	"title": "Data Properties",
+	  	"transient": "Transient Data",
+	  	"time": "Time-Series Data",
+	  	"bulk": "Bulk Data",
+	  	"cold": "Cold Data",
+	  	"hot": "Hot Data"
+	  },
+	  "query_types": {
+	  	"title": "Query Types",
+	  	"id": "by ID",
+	  	"example": "by Example",
+	  	"relationship": "by Relationship",
+	  	"index": "by Full-Text Index"
+	  }
+  },
+
+  "tooltip": {
+  	"general": {
+	 		"title": "The readiness to invest and try new innovations is countering. Whereas, more innovation allows application of new database products and simplifies the introduction of Polyglot Persistence, more investment leads to focus on mainstream solutions.",
+	  	"investment": "How much money are you willing to spend?",
+	  	"innovation": "How much innovation (new database products) are you willing to use?"
+	  },
+	  "data": {
+	  	"title": "Mass data and big increase eventually indicates to use NoSQL database systems. For efficiency, it is advisable to consider Polyglot Persistence as possible option.",
+	  	"sizing": "How big is your current data?",
+	  	"growth": "How much will your data increase?"
+	  },
+	  "data_processing": {
+	  	"title": "More transactional processing indicates a single database system, whereas less enables considering different database products to be applied.",
+	  	"transaction": "How much transaction processing do you need?"
+	  },
+	  "requirements": {
+	  	"title": "According to the CAP Theorem all requirements together need different database products to be realized in a distributed environment. Therefore, it might be an indication to apply Polyglot Persistence.",
+	  	"availability": "Guarantee that every operation must terminate in an intended response",
+	  	"consistency": "Perception that a set of operations has occured all at once",
+	  	"ptolerance": "System operations continue despite arbitrary message loss or failure of individual components of the system"
+	  },
+	  "data_type": {
+	  	"title": "Ratio of used data structure types in your database environment. A homogenous distribution implies an increased recommendation for Polyglot Persistence.",
+	  	"relational": "Organized in rows of fixed-size typed by column values",
+	  	"hierarchical": "Tree-like data structure with parent/child relationships",
+	  	"graph": "Set of nodes and edges referencing other nodes",
+	  	"kv": "Unordered data model with values and their corresponding keys",
+	  	"document": "White box view on data structures with pairs of key and value fields (e.g. representable by JSON or XML)",
+	  	"binary": "Black box view on data structure without knowledge of intern issues"
+	  },
+	  "data_properties": {
+	  	"title": "Ratio of used data properties in your database environment. A homogenous distribution implies an increased recommendation for Polyglot Persistence.",
+	  	"transient": "Temporary data with no intention for durability",
+	  	"time": "Periodical collected data by time-triggered events",
+	  	"bulk": "Input and processing of massive binary data objects",
+	  	"cold": "Business data with almost no activities of modifications (e.g. bank account data)",
+	  	"hot": "Business data with a lot of modifications (e.g. account transactions)"
+	  },
+	  "query_types": {
+	  	"title": "Ratio of used query types in your database environment. A homogenous distribution implies an increased recommendation for Polyglot Persistence.",
+	  	"id": "Direct lookup by unique identifier",
+	  	"example": "Query by using filters on attributes (e.g. WHERE clause in RDBMS)",
+	  	"relationship": "Traversing parent-to-child and child-to-parent relationships between objects",
+	  	"index": "Lookup using full-text search"
+	  }
+  }
+}

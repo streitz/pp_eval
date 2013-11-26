@@ -1,0 +1,98 @@
+{
+	"title": "Polyglot Persistence - Self Assessment",
+	"unknown": "n/a",
+	
+	"label": {
+		"general": {
+			"title": "Allgemein",
+			"investment": "Investition",
+			"innovation": "Innovation"
+	  },
+	  "data": {
+			"title": "Daten",
+			"sizing": "Aktuelles Volumen",
+			"growth": "Zuwachsprognose"
+	  },
+	  "data_processing": {
+			"title": "Daten-verarbeitung",
+			"transaction": "Transaktionen"
+	  },
+	  "requirements": {
+			"title": "Anforderungen",
+			"availability": "Verfügbarkeit",
+			"consistency": "Konsistenz",
+			"ptolerance": "Partitionstoleranz"
+	  },
+	  "data_type": {
+			"title": "Datenstrukturen",
+			"relational": "Relational",
+			"hierarchical": "Hierarchisch",
+			"graph": "Graph",
+			"kv": "Key-Value",
+			"document": "Dokumentorientiert",
+			"binary": "Binär"
+	  },
+	  "data_properties": {
+			"title": "Daten-eigenschaften",
+			"transient": "Transient",
+			"time": "Zeitgereiht",
+			"bulk": "Bulk Daten",
+			"cold": "'Kalte' Daten",
+			"hot": "'Heiße' Daten"
+	  },
+	  "query_types": {
+			"title": "Suchanfrage-typen",
+			"id": "via ID",
+			"example": "via Attribut",
+			"relationship": "via Beziehung",
+			"index": "via Volltext-Index"
+	  }
+  },
+
+  "tooltip": {
+		"general": {
+			"title": "Die Bereitschaft zu investieren und innovativ zu sein wirken gegensätzlich. Eine größere Innovationsfreude ermöglicht den Einsatz von neuen Datanbank Produkten, wohingegen eine größere Investitionsbereitschaft ihren Fokus auf kommerzielle Datenbanksysteme setzt.",
+			"investment": "Wie groß ist Ihre Investitionsbereitschaft?",
+			"innovation": "Wie groß ist Ihre Innovationsfreude?"
+	  },
+	  "data": {
+			"title": "Eine große Datenbasis und ein starkes Wachstum deuten einen Einsatz von NoSQL Systemen an. Um weiterhin effizient mit dieser Datenmenge umzugehen, ist es ratsam Polyglot Persistence als mögliche Option in Erwägung zu ziehen.",
+			"sizing": "Wie groß ist Ihre aktuelle Datenmenge?",
+			"growth": "Wie schätzen Sie das Wachstum Ihrer Daten für die Zukunft ein?"
+	  },
+	  "data_processing": {
+			"title": "Der Einsatz von vielen transaktionalen Operationen auf Ihren Daten deutet auf ein einzelnes Datenbanksystem, das die Verwaltung von Transaktionen beherrscht. Ein geringerer Anteil an Transaktionen ermöglicht den Weg hin zu einer heterogenen Datenbanklandschaft.",
+			"transaction": "Wie groß ist der transaktionale Teil Ihrer Datenbankoperationen?"
+	  },
+	  "requirements": {
+			"title": "Gemäß des CAP Theorems ist der gleichzeitige Einsatz aller drei folgenden Eigenschaften nur mit unterschiedlichen Produkten in einer verteilten Umgebung möglich. Ist dies der Fall, wäre Polyglot Persistence eine mögliche Option.",
+			"availability": "Alle Anfragen an das System werden stets beantwortet",
+			"consistency": "Alle Knoten sehen zur selben Zeit dieselben Daten. Diese Konsistenz sollte nicht verwechselt werden mit der Konsistenz aus der ACID-Transaktionen, die nur die innere Konsistenz eines Datenbestandes betrifft.",
+			"ptolerance": "Das System arbeitet auch bei Verlust von Nachrichten, einzelner Netzknoten oder Partition des Netzes weiter"
+	  },
+	  "data_type": {
+			"title": "Verhältnis der eingesetzten Datenstrukturen Ihrer Datenbankumgebung. Eine gleichmäßige Verteilung spricht für eine Polyglot Persistence Empfehlung. ",
+			"relational": "Daten sind in Tupeln mit bestimmten Attributen angeordnet",
+			"hierarchical": "Eine baumartige Datenstruktur, die mit Eltern/Kind Beziehungen verknüpft ist",
+			"graph": "Eine Menge aus Knoten und Kanten bei denen die Knoten Kanten  untereinander referenzieren",
+			"kv": "Ein ungeordnetes Datenmodell welches Werte anhand ihrer Schlüssel verwaltet",
+			"document": "White-Box Sicht auf Datenstrukturen die anhand von Schlüssel/Werte Paare verwaltet werden (z.B. JSON oder XML Strukturen)",
+			"binary": "Black-Box Sicht auf Datenstrukturen ohne Kenntnis über die internen Verwaltungsprozesse"
+	  },
+	  "data_properties": {
+			"title": "Verhältnis der Dateneigenschaften Ihrer Datenbankumgebung. Eine gleichmäßige Verteilung spricht für eine Polyglot Persistence Empfehlung.",
+			"transient": "Temporäre Daten die keine langfristige Datenhaltung benötigen",
+			"time": "Periodische Daten die mittels zeitgesteuerte Eregnisse gesammelte werden",
+			"bulk": "Massenverarbeitung von binären Datenobjekten",
+			"cold": "Geschäftsdaten, die fast keiner Modifikation unterliegen (z.B. Kontonummer und BLZ eines Bankkontos)",
+			"hot": "Geschäftsdaten mit ständiger Modifikation (z.B. Banküberweisungen) "
+	  },
+	  "query_types": {
+			"title": "Verhältnis der Suchanfragetypen Ihrer Datenbankumgebung. Eine gleichmäßige Verteilung spricht für eine Polyglot Persistence Empfehlung.",
+			"id": "Direkte Suche nach Daten mittels eindeutiger Kennung",
+			"example": "Datensuchanfrage mittels eines Attributwertes (z.B. WHERE Klausel in einem klassischen RDBMS)",
+			"relationship": "Suchanfragen, die die Eltern-Kind bzw. Kind-Eltern Beziehungen zwischen Datenobjekten durchqueren",
+			"index": "Datenanfrage mittels Volltextsuche"
+	  }
+  }
+}

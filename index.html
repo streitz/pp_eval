@@ -26,6 +26,9 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
 
+    <!-- i18next -->
+    <script type="text/javascript" src="lib/i18next.min.js"></script>    
+
     <!-- Custom -->
     <script type="text/javascript" src="js/eval.js"></script>
     <link rel="stylesheet" href="css/eval.css"/>
@@ -43,28 +46,28 @@
       </div>
       <div class="col-lg-4">
         <div class="navbar-header">
-          <span class="navbar-brand" style="color:#FFF;font-size:20px">
-            Polyglot Persistence - Self Assessment
-          </span>
+          <span class="navbar-brand" style="color:#FFF;font-size:20px" data-i18n="title"></span>
         </div>
       </div>
-      <div class="col-lg-7">
+      <div class="col-lg-6">
         <div class="row"  style="margin-top:15px">
           <div class="col-lg-1">
             <span id="thumb-down" class="glyphicon glyphicon-thumbs-down" style="color:#FF0000;margin-left:20px"></span>
           </div>
           <div class="col-lg-10">
-
             <div class="progress">
               <div id="recommendation" class="progress-bar" role="progressbar">
               </div>
             </div>
-
           </div>
           <div class="col-lg-1">
             <span id="thumb-up" class="glyphicon glyphicon-thumbs-up" style="color:#00FF00;margin-left:-20px;margin-top:-3px"></span>
           </div>
         </div>
+      </div>
+      <div class="col-lg-1">
+        <a id="lang_en" href="#"><img class="tooltip" title="English" border="0" src="pics/us.gif" style="margin-top:17px;opacity:1"></a>
+        <a id="lang_de" href="#"><img class="tooltip" title="Deutsch" border="0" src="pics/de.gif" style="margin-top:17px;margin-left:25px;opacity:1"></a>
       </div>
     </div>
   </div>
@@ -77,7 +80,7 @@
           <div class="panel-heading">
             <div class="row">
               <div class="col-lg-3">
-                <span class="panel-title" data-toggle="tooltip" data-placement="right" title="Importance of Section 'General'">General</span>
+                <span class="panel-title" data-toggle="tooltip" data-placement="right" data-i18n="label.general.title;[data-original-title]tooltip.general.title"></span>
               </div>
               <div id="slider-general-div" class="col-lg-7">
                 <div id="slider-general" class="headslider"></div>
@@ -90,7 +93,7 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-lg-3">
-                <span class="property-title" data-toggle="tooltip" data-placement="right" title="How much money are you willing to spend?">Investment</span>
+                <span class="property-title" data-toggle="tooltip" data-placement="right" data-i18n="label.general.investment;[data-original-title]tooltip.general.investment"></span>
               </div>
               <div id="slider-investment-div" class="col-lg-7">
                 <div id="slider-investment" class="slider"></div>
@@ -98,13 +101,13 @@
               <div class="col-lg-2">
                 <div class="checkbox">
                   <input type="checkbox" id="checkbox-investment" class="css-checkbox lrg"/>
-                  <label for="checkbox-investment" name="checkbox-investment_lbl" class="css-label lrg checkbox-style">unknown</label>
+                  <label for="checkbox-investment" name="checkbox-investment_lbl" class="css-label lrg checkbox-style" data-i18n="unknown"></label>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-lg-3">
-                <span class="property-title" data-toggle="tooltip" data-placement="right" title="How much innovation (new database products) are you willing to use?">Innovation</span>
+                <span class="property-title" data-toggle="tooltip" data-placement="right" data-i18n="label.general.innovation;[data-original-title]tooltip.general.innovation"></span>
               </div>
               <div class="col-lg-7">
                 <div id="slider-innovation" class="slider"></div>
@@ -112,7 +115,7 @@
               <div class="col-lg-2">
                 <div class="checkbox">
                   <input type="checkbox" id="checkbox-innovation" class="css-checkbox lrg"/>
-                  <label for="checkbox-innovation" name="checkbox-innovation_lbl" class="css-label lrg checkbox-style">unknown</label>
+                  <label for="checkbox-innovation" name="checkbox-innovation_lbl" class="css-label lrg checkbox-style" data-i18n="unknown"></label>
                 </div>
               </div>
             </div>
@@ -124,7 +127,7 @@
           <div class="panel-heading">
             <div class="row">
               <div class="col-lg-3">
-                <span class="panel-title" data-toggle="tooltip" data-placement="right" title="Importance of Section 'Data'">Data</span>
+                <span class="panel-title" data-toggle="tooltip" data-placement="right" data-i18n="label.data.title;[data-original-title]tooltip.data.title"></span>
               </div>
               <div id="slider-data-div" class="col-lg-7">
                 <div id="slider-data" class="headslider"></div>
@@ -137,7 +140,7 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-lg-3">
-                <span class="property-title" data-toggle="tooltip" data-placement="right" title="How big is your current data?">Current Sizing</span>
+                <span class="property-title" data-toggle="tooltip" data-placement="right" data-i18n="label.data.sizing;[data-original-title]tooltip.data.sizing"></span>
               </div>
               <div class="col-lg-7">
                 <div id="slider-data_sizing" class="slider"></div>
@@ -145,13 +148,13 @@
               <div class="col-lg-2">
                 <div class="checkbox">
                   <input type="checkbox" id="checkbox-data_sizing" class="css-checkbox lrg"/>
-                  <label for="checkbox-data_sizing" name="checkbox-data_sizing_lbl" class="css-label lrg checkbox-style">unknown</label>
+                  <label for="checkbox-data_sizing" name="checkbox-data_sizing_lbl" class="css-label lrg checkbox-style" data-i18n="unknown"></label>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-lg-3">
-                <span class="property-title" data-toggle="tooltip" data-placement="right" title="How much will your data increase?">Growth Prediction</span>
+                <span class="property-title" data-toggle="tooltip" data-placement="right" data-i18n="label.data.growth;[data-original-title]tooltip.data.growth"></span>
               </div>
               <div class="col-lg-7">
                 <div id="slider-data_growth" class="slider"></div>
@@ -159,7 +162,7 @@
               <div class="col-lg-2">
                 <div class="checkbox">
                   <input type="checkbox" id="checkbox-data_growth" class="css-checkbox lrg"/>
-                  <label for="checkbox-data_growth" name="checkbox-data_growth_lbl" class="css-label lrg checkbox-style">unknown</label>
+                  <label for="checkbox-data_growth" name="checkbox-data_growth_lbl" class="css-label lrg checkbox-style" data-i18n="unknown"></label>
                 </div>
               </div>
             </div>
@@ -171,7 +174,7 @@
           <div class="panel-heading">
             <div class="row">
               <div class="col-lg-3">
-                <span class="panel-title" data-toggle="tooltip" data-placement="right" title="Importance of Section 'Data Processing'">Data Processing</span>
+                <span id="data_processing" class="panel-title" data-toggle="tooltip" data-placement="right" data-i18n="label.data_processing.title;[data-original-title]tooltip.data_processing.title"></span>
               </div>
               <div id="slider-data_processing-div" class="col-lg-7">
                 <div id="slider-data_processing" class="headslider"></div>
@@ -184,7 +187,7 @@
           <div class="panel-body">
              <div class="row">
               <div class="col-lg-3">
-                <span class="property-title" data-toggle="tooltip" data-placement="right" title="How much transaction processing do you need?">Transactions</span>
+                <span class="property-title" data-toggle="tooltip" data-placement="right" data-i18n="label.data_processing.transaction;[data-original-title]tooltip.data_processing.transaction"></span>
               </div>
               <div class="col-lg-7">
                 <div id="slider-transaction" class="slider"></div>
@@ -192,7 +195,7 @@
               <div class="col-lg-2">
                 <div class="checkbox">
                   <input type="checkbox" id="checkbox-transaction" class="css-checkbox lrg"/>
-                  <label for="checkbox-transaction" name="checkbox-transaction_lbl" class="css-label lrg checkbox-style">unknown</label>
+                  <label for="checkbox-transaction" name="checkbox-transaction_lbl" class="css-label lrg checkbox-style" data-i18n="unknown"></label>
                 </div>
               </div>
             </div>
@@ -204,7 +207,7 @@
           <div class="panel-heading">
             <div class="row">
               <div class="col-lg-3">
-                <span class="panel-title" data-toggle="tooltip" data-placement="right" title="Importance of Section 'Requirements'">Requirements</span>
+                <span class="panel-title" data-toggle="tooltip" data-placement="right" data-i18n="label.requirements.title;[data-original-title]tooltip.requirements.title"></span>
               </div>
               <div id="slider-requirements-div" class="col-lg-7">
                 <div id="slider-requirements" class="headslider"></div>
@@ -217,7 +220,7 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-lg-3">
-                <span class="property-title" data-toggle="tooltip" data-placement="right" title="Guarantee that every operation must terminate in an intended response.">Availability</span>
+                <span class="property-title" data-toggle="tooltip" data-placement="right" data-i18n="label.requirements.availability;[data-original-title]tooltip.requirements.availability"></span>
               </div>
               <div id="slider-availability-div" class="col-lg-7">
                 <div id="slider-availability" class="slider"></div>
@@ -225,13 +228,13 @@
               <div class="col-lg-2">
                 <div class="checkbox">
                   <input type="checkbox" id="checkbox-availability" class="css-checkbox lrg"/>
-                  <label for="checkbox-availability" name="checkbox-availability_lbl" class="css-label lrg checkbox-style">unknown</label>
+                  <label for="checkbox-availability" name="checkbox-availability_lbl" class="css-label lrg checkbox-style" data-i18n="unknown"></label>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-lg-3">
-                <span class="property-title" data-toggle="tooltip" data-placement="right" title="Perception that a set of operations has occured all at once.">Consistency</span>
+                <span class="property-title" data-toggle="tooltip" data-placement="right" data-i18n="label.requirements.consistency;[data-original-title]tooltip.requirements.consistency"></span>
               </div>
               <div id="slider-consistency-div" class="col-lg-7">
                 <div id="slider-consistency" class="slider"></div>
@@ -239,13 +242,13 @@
               <div class="col-lg-2">
                 <div class="checkbox">
                   <input type="checkbox" id="checkbox-consistency" class="css-checkbox lrg"/>
-                  <label for="checkbox-consistency" name="checkbox-consistency_lbl" class="css-label lrg checkbox-style">unknown</label>
+                  <label for="checkbox-consistency" name="checkbox-consistency_lbl" class="css-label lrg checkbox-style" data-i18n="unknown"></label>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-lg-3">
-                <span class="property-title" data-toggle="tooltip" data-placement="right" title="System operations continue despite arbitrary message loss or failure of individual components of the system.">Growth Partition Tolerance</span>
+                <span class="property-title" data-toggle="tooltip" data-placement="right" data-i18n="label.requirements.ptolerance;[data-original-title]tooltip.requirements.ptolerance"></span>
               </div>
               <div id="slider-ptolerance-div" class="col-lg-7">
                 <div id="slider-ptolerance" class="slider"></div>
@@ -253,7 +256,7 @@
               <div class="col-lg-2">
                 <div class="checkbox">
                   <input type="checkbox" id="checkbox-ptolerance" class="css-checkbox lrg"/>
-                  <label for="checkbox-ptolerance" name="checkbox-ptolerance_lbl" class="css-label lrg checkbox-style">unknown</label>
+                  <label for="checkbox-ptolerance" name="checkbox-ptolerance_lbl" class="css-label lrg checkbox-style" data-i18n="unknown"></label>
                 </div>
               </div>
             </div>
@@ -267,7 +270,7 @@
           <div class="panel-heading">
             <div class="row">
               <div class="col-lg-3">
-                <span class="panel-title" data-toggle="tooltip" data-placement="right" style="margin-top:7px" title="Ratio of used data structure types in your database environment">Data Structure Types</span>
+                <span id="data_type" class="panel-title" data-toggle="tooltip" data-placement="right" style="margin-top:7px" data-i18n="label.data_type.title;[data-original-title]tooltip.data_type.title"></span>
               </div>
               <div id="slider-data_type-div" class="col-lg-7">
                 <div id="slider-data_type" class="headslider"></div>
@@ -280,7 +283,7 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-lg-3">
-                <span class="property-title" data-toggle="tooltip" data-placement="right" title="Organized in rows of fixed-size typed by column values">Relational Data</span>
+                <span class="property-title" data-toggle="tooltip" data-placement="right" data-i18n="label.data_type.relational;[data-original-title]tooltip.data_type.relational"></span>
               </div>
               <div class="col-lg-6">
                 <div id="slider-relational" class="slider"></div>
@@ -291,13 +294,13 @@
               <div class="col-lg-2">
                 <div class="checkbox">
                   <input type="checkbox" id="checkbox-relational" class="css-checkbox lrg simple data_structures"/>
-                  <label for="checkbox-relational" name="checkbox-relational_lbl" class="css-label lrg checkbox-style">unknown</label>
+                  <label for="checkbox-relational" name="checkbox-relational_lbl" class="css-label lrg checkbox-style" data-i18n="unknown"></label>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-lg-3">
-                <span class="property-title" data-toggle="tooltip" data-placement="right" title="Tree-like data structure with parent/child relationships">Hierarchical Data</span>
+                <span class="property-title" data-toggle="tooltip" data-placement="right" data-i18n="label.data_type.hierarchical;[data-original-title]tooltip.data_type.hierarchical"></span>
               </div>
               <div class="col-lg-6">
                 <div id="slider-hierarchical" class="slider"></div>
@@ -308,13 +311,13 @@
               <div class="col-lg-2">
                 <div class="checkbox">
                   <input type="checkbox" id="checkbox-hierarchical" class="css-checkbox lrg simple data_structures"/>
-                  <label for="checkbox-hierarchical" name="checkbox-hierarchical_lbl" class="css-label lrg checkbox-style">unknown</label>
+                  <label for="checkbox-hierarchical" name="checkbox-hierarchical_lbl" class="css-label lrg checkbox-style" data-i18n="unknown"></label>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-lg-3">
-                <span class="property-title" data-toggle="tooltip" data-placement="right" title="Set of nodes and edges referencing other nodes">Graph Data</span>
+                <span class="property-title" data-toggle="tooltip" data-placement="right" data-i18n="label.data_type.graph;[data-original-title]tooltip.data_type.graph"></span>
               </div>
               <div class="col-lg-6">
                 <div id="slider-graph" class="slider"></div>
@@ -325,13 +328,13 @@
               <div class="col-lg-2">
                 <div class="checkbox">
                   <input type="checkbox" id="checkbox-graph" class="css-checkbox lrg simple data_structures"/>
-                  <label for="checkbox-graph" name="checkbox-graph_lbl" class="css-label lrg checkbox-style">unknown</label>
+                  <label for="checkbox-graph" name="checkbox-graph_lbl" class="css-label lrg checkbox-style" data-i18n="unknown"></label>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-lg-3">
-                <span class="property-title" data-toggle="tooltip" data-placement="right" title="Unordered data model with values and their corresponding keys">Key-Value Data</span>
+                <span class="property-title" data-toggle="tooltip" data-placement="right" data-i18n="label.data_type.kv;[data-original-title]tooltip.data_type.kv"></span>
               </div>
               <div class="col-lg-6">
                 <div id="slider-kv" class="slider"></div>
@@ -342,13 +345,13 @@
               <div class="col-lg-2">
                 <div class="checkbox">
                   <input type="checkbox" id="checkbox-kv" class="css-checkbox lrg simple data_structures"/>
-                  <label for="checkbox-kv" name="checkbox-kv_lbl" class="css-label lrg checkbox-style">unknown</label>
+                  <label for="checkbox-kv" name="checkbox-kv_lbl" class="css-label lrg checkbox-style" data-i18n="unknown"></label>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-lg-3">
-                <span class="property-title" data-toggle="tooltip" data-placement="right" title="White box view on data structures with pairs of key and value fields (e.g. representable by JSON or XML)">Document Data</span>
+                <span class="property-title" data-toggle="tooltip" data-placement="right" data-i18n="label.data_type.document;[data-original-title]tooltip.data_type.document"></span>
               </div>
               <div class="col-lg-6">
                 <div id="slider-document" class="slider"></div>
@@ -359,13 +362,13 @@
               <div class="col-lg-2">
                 <div class="checkbox">
                   <input type="checkbox" id="checkbox-document" class="css-checkbox lrg simple data_structures"/>
-                  <label for="checkbox-document" name="checkbox-document_lbl" class="css-label lrg checkbox-style">unknown</label>
+                  <label for="checkbox-document" name="checkbox-document_lbl" class="css-label lrg checkbox-style" data-i18n="unknown"></label>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-lg-3">
-                <span class="property-title" data-toggle="tooltip" data-placement="right" title="Black box view on data structure without knowledge of intern issues.">Binary Data</span>
+                <span class="property-title" data-toggle="tooltip" data-placement="right" data-i18n="label.data_type.binary;[data-original-title]tooltip.data_type.binary"></span>
               </div>
               <div class="col-lg-6">
                 <div id="slider-binary" class="slider"></div>
@@ -376,7 +379,7 @@
               <div class="col-lg-2">
                 <div class="checkbox">
                   <input type="checkbox" id="checkbox-binary" class="css-checkbox lrg simple data_structures"/>
-                  <label for="checkbox-binary" name="checkbox-binary_lbl" class="css-label lrg checkbox-style">unknown</label>
+                  <label for="checkbox-binary" name="checkbox-binary_lbl" class="css-label lrg checkbox-style" data-i18n="unknown"></label>
                 </div>
               </div>
             </div>
@@ -388,7 +391,7 @@
           <div class="panel-heading">
             <div class="row">
               <div class="col-lg-3">
-                <span class="panel-title" data-toggle="tooltip" data-placement="right" title="Ratio of used data properties in your database environment">Data Properties</span>
+                <span id="data_properties" class="panel-title" data-toggle="tooltip" data-placement="right" data-i18n="label.data_properties.title;[data-original-title]tooltip.data_properties.title"></span>
               </div>
               <div id="slider-data_properties-div" class="col-lg-7">
                 <div id="slider-data_properties" class="headslider"></div>
@@ -401,7 +404,7 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-lg-3">
-                <span class="property-title" data-toggle="tooltip" data-placement="right" title="Temporary data with no intention for durability">Transient Data</span>
+                <span class="property-title" data-toggle="tooltip" data-placement="right" data-i18n="label.data_properties.transient;[data-original-title]tooltip.data_properties.transient"></span>
               </div>
               <div class="col-lg-6">
                 <div id="slider-transient" class="slider"></div>
@@ -412,13 +415,13 @@
               <div class="col-lg-2">
                 <div class="checkbox">
                   <input type="checkbox" id="checkbox-transient" class="css-checkbox lrg simple data_properties"/>
-                  <label for="checkbox-transient" name="checkbox-transient_lbl" class="css-label lrg checkbox-style">unknown</label>
+                  <label for="checkbox-transient" name="checkbox-transient_lbl" class="css-label lrg checkbox-style" data-i18n="unknown"></label>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-lg-3">
-                <span class="property-title" data-toggle="tooltip" data-placement="right" title="Periodical collected data by  time-triggered events">Time-Series Data</span>
+                <span class="property-title" data-toggle="tooltip" data-placement="right" data-i18n="label.data_properties.time;[data-original-title]tooltip.data_properties.time"></span>
               </div>
               <div class="col-lg-6">
                 <div id="slider-time" class="slider"></div>
@@ -429,13 +432,13 @@
               <div class="col-lg-2">
                 <div class="checkbox">
                   <input type="checkbox" id="checkbox-time" class="css-checkbox lrg simple data_properties"/>
-                  <label for="checkbox-time" name="checkbox-time_lbl" class="css-label lrg checkbox-style">unknown</label>
+                  <label for="checkbox-time" name="checkbox-time_lbl" class="css-label lrg checkbox-style" data-i18n="unknown"></label>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-lg-3">
-                <span class="property-title" data-toggle="tooltip" data-placement="right" title="Input and processing of massive binary data objects">Bulk Data</span>
+                <span class="property-title" data-toggle="tooltip" data-placement="right" data-i18n="label.data_properties.bulk;[data-original-title]tooltip.data_properties.bulk"></span>
               </div>
               <div class="col-lg-6">
                 <div id="slider-bulk" class="slider"></div>
@@ -446,13 +449,13 @@
               <div class="col-lg-2">
                 <div class="checkbox">
                   <input type="checkbox" id="checkbox-bulk" class="css-checkbox lrg simple data_properties"/>
-                  <label for="checkbox-bulk" name="checkbox-bulk_lbl" class="css-label lrg checkbox-style">unknown</label>
+                  <label for="checkbox-bulk" name="checkbox-bulk_lbl" class="css-label lrg checkbox-style" data-i18n="unknown"></label>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-lg-3">
-                <span class="property-title" data-toggle="tooltip" data-placement="right" title="Business data with almost no activities of modifications (e.g. bank account data)">Cold Data</span>
+                <span class="property-title" data-toggle="tooltip" data-placement="right" data-i18n="label.data_properties.cold;[data-original-title]tooltip.data_properties.cold"></span>
               </div>
               <div class="col-lg-6">
                 <div id="slider-cold" class="slider"></div>
@@ -463,13 +466,13 @@
               <div class="col-lg-2">
                 <div class="checkbox">
                   <input type="checkbox" id="checkbox-cold" class="css-checkbox lrg simple data_properties"/>
-                  <label for="checkbox-cold" name="checkbox-cold_lbl" class="css-label lrg checkbox-style">unknown</label>
+                  <label for="checkbox-cold" name="checkbox-cold_lbl" class="css-label lrg checkbox-style" data-i18n="unknown"></label>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-lg-3">
-                <span class="property-title" data-toggle="tooltip" data-placement="right" title="Business data with a lot of modifications (e.g. account transactions)">Hot Data</span>
+                <span class="property-title" data-toggle="tooltip" data-placement="right" data-i18n="label.data_properties.hot;[data-original-title]tooltip.data_properties.hot"></span>
               </div>
               <div class="col-lg-6">
                 <div id="slider-hot" class="slider"></div>
@@ -480,7 +483,7 @@
               <div class="col-lg-2">
                 <div class="checkbox">
                   <input type="checkbox" id="checkbox-hot" class="css-checkbox lrg simple data_properties"/>
-                  <label for="checkbox-hot" name="checkbox-hot_lbl" class="css-label lrg checkbox-style">unknown</label>
+                  <label for="checkbox-hot" name="checkbox-hot_lbl" class="css-label lrg checkbox-style" data-i18n="unknown"></label>
                 </div>
               </div>
             </div>
@@ -492,7 +495,7 @@
           <div class="panel-heading">
             <div class="row">
               <div class="col-lg-3">
-                <span class="panel-title" data-toggle="tooltip" data-placement="right" title="Ratio of used query types in your database environment">Query Types</span>
+                <span id="query_types" class="panel-title" data-toggle="tooltip" data-placement="right" data-i18n="label.query_types.title;[data-original-title]tooltip.query_types.title"></span>
               </div>
               <div id="slider-query_types-div" class="col-lg-7">
                 <div id="slider-query_types" class="headslider"></div>
@@ -505,7 +508,7 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-lg-3">
-                <span class="property-title" data-toggle="tooltip" data-placement="right" title="Direct lookup by unique identifier">by ID</span>
+                <span class="property-title" data-toggle="tooltip" data-placement="right" data-i18n="label.query_types.id;[data-original-title]tooltip.query_types.id"></span>
               </div>
               <div class="col-lg-6">
                 <div id="slider-query_type_id" class="slider"></div>
@@ -516,13 +519,13 @@
               <div class="col-lg-2">
                 <div class="checkbox">
                   <input type="checkbox" id="checkbox-query_type_id" class="css-checkbox lrg simple query_type"/>
-                  <label for="checkbox-query_type_id" name="checkbox-query_type_id_lbl" class="css-label lrg checkbox-style">unknown</label>
+                  <label for="checkbox-query_type_id" name="checkbox-query_type_id_lbl" class="css-label lrg checkbox-style" data-i18n="unknown"></label>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-lg-3">
-                <span class="property-title" data-toggle="tooltip" data-placement="right" title="Query by using filters on attributes (e.g. WHERE clause in RDBMS)">by example</span>
+                <span class="property-title" data-toggle="tooltip" data-placement="right" data-i18n="label.query_types.example;[data-original-title]tooltip.query_types.example"></span>
               </div>
               <div class="col-lg-6">
                 <div id="slider-query_type_example" class="slider"></div>
@@ -533,13 +536,13 @@
               <div class="col-lg-2">
                 <div class="checkbox">
                   <input type="checkbox" id="checkbox-query_type_example" class="css-checkbox lrg simple query_type"/>
-                  <label for="checkbox-query_type_example" name="checkbox-query_type_example_lbl" class="css-label lrg checkbox-style">unknown</label>
+                  <label for="checkbox-query_type_example" name="checkbox-query_type_example_lbl" class="css-label lrg checkbox-style" data-i18n="unknown"></label>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-lg-3">
-                <span class="property-title" data-toggle="tooltip" data-placement="right" title="Traversing parent-to-child and child-to-parent relationships between objects.">by relationship</span>
+                <span class="property-title" data-toggle="tooltip" data-placement="right" data-i18n="label.query_types.relationship;[data-original-title]tooltip.query_types.relationship"></span>
               </div>
               <div class="col-lg-6">
                 <div id="slider-query_type_relationship" class="slider"></div>
@@ -550,13 +553,13 @@
               <div class="col-lg-2">
                 <div class="checkbox">
                   <input type="checkbox" id="checkbox-query_type_relationship" class="css-checkbox lrg simple query_type"/>
-                  <label for="checkbox-query_type_relationship" name="checkbox-query_type_relationship_lbl" class="css-label lrg checkbox-style">unknown</label>
+                  <label for="checkbox-query_type_relationship" name="checkbox-query_type_relationship_lbl" class="css-label lrg checkbox-style" data-i18n="unknown"></label>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-lg-3">
-                <span class="property-title" data-toggle="tooltip" data-placement="right" title="Lookup using full-text search.">by full-text index</span>
+                <span class="property-title" data-toggle="tooltip" data-placement="right" data-i18n="label.query_types.index;[data-original-title]tooltip.query_types.index"></span>
               </div>
               <div class="col-lg-6">
                 <div id="slider-query_type_fulltext" class="slider"></div>
@@ -567,7 +570,7 @@
               <div class="col-lg-2">
                 <div class="checkbox">
                   <input type="checkbox" id="checkbox-query_type_fulltext" class="css-checkbox lrg simple query_type"/>
-                  <label for="checkbox-query_type_fulltext" name="checkbox-query_type_fulltext_lbl" class="css-label lrg checkbox-style">unknown</label>
+                  <label for="checkbox-query_type_fulltext" name="checkbox-query_type_fulltext_lbl" class="css-label lrg checkbox-style" data-i18n="unknown"></label>
                 </div>
               </div>
             </div>

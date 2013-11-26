@@ -97,7 +97,7 @@ a.ui-slider-handle {
 }
 
 .tooltip-inner {
-    width: 350px;
+    width: 950px;
 }
 
 .panel-title {
@@ -107,7 +107,7 @@ a.ui-slider-handle {
 }
 
 .checkbox {
-    padding-left: 0px;
+    padding-left: 15px;
     margin-left: -5px;
 }
 
