@@ -384,18 +384,18 @@
 
             advice.general = 0.5 * Math.pow(2, data.innovation) * (1.0 - data.investment * 0.2) / 2
 
-            // if(!($('#slider-general').labeledslider('option').disabled)){
-            //     color = getColor(advice.general)
-            //     $('#icon-general').css('color', color)
-            // }
+            if(!($('#slider-general').labeledslider('option').disabled)){
+                color = getColor(advice.general)
+                $('#icon-general').css('color', color)
+            }
 
 
             advice.data = (data.data_sizing + 1) * (data.data_growth + 1) / 30
 
-            // if(!($('#slider-data').labeledslider('option').disabled)){
-            //     color = getColor(advice.data)
-            //     $('#icon-data').css('color', color)
-            // }
+            if(!($('#slider-data').labeledslider('option').disabled)){
+                color = getColor(advice.data)
+                $('#icon-data').css('color', color)
+            }
 
 
             var sum = data.availability + data.consistency + data.ptolerance
@@ -406,36 +406,36 @@
             else
                 advice.requirements = 0
 
-            // if(!($('#slider-requirements').labeledslider('option').disabled)){
-            //     color = getColor(advice.requirements)
-            //     $('#icon-requirements').css('color', color)
-            // }
+            if(!($('#slider-requirements').labeledslider('option').disabled)){
+                color = getColor(advice.requirements)
+                $('#icon-requirements').css('color', color)
+            }
 
 
             advice.data_processing = 1/ Math.pow(2, data.transaction)
 
-            // if(!($('#slider-data_processing').labeledslider('option').disabled)){
-            //     color = getColor(advice.data_processing)
-            //     $('#icon-data_processing').css('color', color)
-            // }
+            if(!($('#slider-data_processing').labeledslider('option').disabled)){
+                color = getColor(advice.data_processing)
+                $('#icon-data_processing').css('color', color)
+            }
 
 
-            // if(!($('#slider-data_type').labeledslider('option').disabled)){
-            //     color = getColor(advice.data_types)
-            //     $('#icon-data_type').css('color', color)
-            // }
+            if(!($('#slider-data_type').labeledslider('option').disabled)){
+                color = getColor(advice.data_types)
+                $('#icon-data_type').css('color', color)
+            }
 
 
-            // if(!($('#slider-data_properties').labeledslider('option').disabled)){
-            //     color = getColor(advice.data_properties)
-            //     $('#icon-data_properties').css('color', color)
-            // }
+            if(!($('#slider-data_properties').labeledslider('option').disabled)){
+                color = getColor(advice.data_properties)
+                $('#icon-data_properties').css('color', color)
+            }
 
 
-            // if(!($('#slider-query_types').labeledslider('option').disabled)){
-            //     color = getColor(advice.query_types)
-            //     $('#icon-query_types').css('color', color)
-            // }
+            if(!($('#slider-query_types').labeledslider('option').disabled)){
+                color = getColor(advice.query_types)
+                $('#icon-query_types').css('color', color)
+            }
 
 
             var weightGeneral = advice.general * 0.5 * Math.pow(2, data.general)
@@ -673,6 +673,45 @@
         labeledSlider('#slider-query_types', 'query_type', categories2)
         $('span', $('#slider-query_types-div')).first().css('margin-right', '-25px')
         $('span', $('#slider-query_types-div')).last().css('margin-left', '-35px')
+
+        var timer = null
+        $(window).resize(function () {
+            if (timer !== null) {
+                clearTimeout(timer)
+            }
+            timer = setTimeout(function () {
+                $('#slider-availability').labeledslider('destroy')
+                labeledSlider('#slider-availability', 'availability', categories)
+                $('#slider-consistency').labeledslider('destroy')
+                labeledSlider('#slider-consistency', 'consistency', categories)
+                $('#slider-ptolerance').labeledslider('destroy')
+                labeledSlider('#slider-ptolerance', 'ptolerance', categories)
+                $('#slider-data_sizing').labeledslider('destroy')
+                labeledSlider('#slider-data_sizing', 'data_sizing', ['&le;100 MB', '&le;1 GB', '&le;10 GB', '&le;100 GB', '&le;1 TB', '>1 TB'])
+                $('#slider-data_growth').labeledslider('destroy')
+                labeledSlider('#slider-data_growth', 'data_growth', changes, tooltip1)
+                $('#slider-transaction').labeledslider('destroy')
+                labeledSlider('#slider-transaction', 'transaction', ['0%', '25%', '50%', '75%', '100%'])
+                $('#slider-innovation').labeledslider('destroy')
+                labeledSlider('#slider-innovation', 'innovation', categories2)
+                $('#slider-investment').labeledslider('destroy')
+                labeledSlider('#slider-investment', 'investment', categories3)
+                $('#slider-general').labeledslider('destroy')
+                labeledSlider('#slider-general', 'general', categories2)
+                $('#slider-requirements').labeledslider('destroy')
+                labeledSlider('#slider-requirements', 'requirements', categories2)
+                $('#slider-data').labeledslider('destroy')
+                labeledSlider('#slider-data', 'data', categories2)
+                $('#slider-data_type').labeledslider('destroy')
+                labeledSlider('#slider-data_type', 'data_type', categories2)
+                $('#slider-data_properties').labeledslider('destroy')
+                labeledSlider('#slider-data_properties', 'data_properties', categories2)
+                $('#slider-data_processing').labeledslider('destroy')
+                labeledSlider('#slider-data_processing', 'data_processing', categories2)
+                $('#slider-query_types').labeledslider('destroy')
+                labeledSlider('#slider-query_types', 'query_type', categories2)
+            }, 10)
+        })
 
         update()
     });
