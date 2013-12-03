@@ -11,7 +11,7 @@
 	  "data": {
 	  	"title": "Data",
 	  	"sizing": "Current Sizing",
-	  	"growth": "Growth Predition"
+	  	"growth": "Growth Prediction"
 	  },
 	  "data_processing": {
 	  	"title": "Data Processing",
@@ -67,11 +67,11 @@
 	  "requirements": {
 	  	"title": "According to the CAP Theorem all requirements together need different database products to be realized in a distributed environment. Therefore, it might be an indication to apply Polyglot Persistence.",
 	  	"availability": "Guarantee that every operation must terminate in an intended response",
-	  	"consistency": "Perception that a set of operations has occured all at once",
+	  	"consistency": "Perception that a set of operations has occurred all at once",
 	  	"ptolerance": "System operations continue despite arbitrary message loss or failure of individual components of the system"
 	  },
 	  "data_type": {
-	  	"title": "Ratio of used data structure types in your database environment. A homogenous distribution implies an increased recommendation for Polyglot Persistence.",
+	  	"title": "Ratio of used data structure types in your database environment. A homogeneous distribution implies an increased recommendation for Polyglot Persistence.",
 	  	"relational": "Organized in rows of fixed-size typed by column values",
 	  	"hierarchical": "Tree-like data structure with parent/child relationships",
 	  	"graph": "Set of nodes and edges referencing other nodes",
@@ -80,7 +80,7 @@
 	  	"binary": "Black box view on data structure without knowledge of intern issues"
 	  },
 	  "data_properties": {
-	  	"title": "Ratio of used data properties in your database environment. A homogenous distribution implies an increased recommendation for Polyglot Persistence.",
+	  	"title": "Ratio of used data properties in your database environment. A homogeneous distribution implies an increased recommendation for Polyglot Persistence.",
 	  	"transient": "Temporary data with no intention for durability",
 	  	"time": "Periodical collected data by time-triggered events",
 	  	"bulk": "Input and processing of massive binary data objects",
@@ -88,7 +88,7 @@
 	  	"hot": "Business data with a lot of modifications (e.g. account transactions)"
 	  },
 	  "query_types": {
-	  	"title": "Ratio of used query types in your database environment. A homogenous distribution implies an increased recommendation for Polyglot Persistence.",
+	  	"title": "Ratio of used query types in your database environment. A homogeneous distribution implies an increased recommendation for Polyglot Persistence.",
 	  	"id": "Direct lookup by unique identifier",
 	  	"example": "Query by using filters on attributes (e.g. WHERE clause in RDBMS)",
 	  	"relationship": "Traversing parent-to-child and child-to-parent relationships between objects",
