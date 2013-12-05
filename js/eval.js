@@ -402,9 +402,9 @@
             if (sum > 5)
                 advice.requirements = 1
             else if (sum > 4)
-                advice.requirements = 0.5
+                advice.requirements = 0.75
             else
-                advice.requirements = 0
+                advice.requirements = 0.5
 
             if(!($('#slider-requirements').labeledslider('option').disabled)){
                 color = getColor(advice.requirements)
